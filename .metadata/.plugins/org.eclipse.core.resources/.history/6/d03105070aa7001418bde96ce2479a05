@@ -1,0 +1,18 @@
+package cs13b027_lab1_2;
+
+public class TeachingClassEmployee extends Employee{
+	
+	String designation;
+	
+	public longBio(){
+		data();
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+}

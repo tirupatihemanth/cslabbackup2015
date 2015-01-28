@@ -1,0 +1,6 @@
+
+
+public class MainClass {
+	ComplexArithmeticTests complexTest = new ComplexArithmeticTests();
+	PolarComplexArithmeticTestsTest polarTest = new PolarComplexArithmeticTestsTest();
+}

@@ -1,0 +1,4 @@
+description.filestatelongevity=864000000
+description.maxfilestates=10000
+eclipse.preferences.version=1
+version=1

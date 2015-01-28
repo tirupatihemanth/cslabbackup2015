@@ -1,0 +1,16 @@
+package cs13b027_lab1_2;
+
+public class MTechStudent extends Student{
+
+	public MTechStudent(){
+		
+	}
+	
+	public void longBio(){
+		style("Long Biography");
+		data();
+		System.out.println("\tclass: "+"BTech/DD Student");
+		style();
+	}
+	
+}

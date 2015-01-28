@@ -1,0 +1,112 @@
+package cs13b027_lab1_2;
+
+public class People implements Comparable {
+
+	public People() {
+
+	}
+
+	private enum Country {
+		india, america, germany, russia, australia, italy, china, indonesia
+	};
+
+	private enum Gender {
+		male, female, f, other, o
+	};
+
+	private String name;
+	private Country nationality;
+	private Gender gender;
+	private String mothersName;
+	private String fathersName;
+	private String department;
+
+	public void shortBio(){
+		
+		System.out.println("***************Short Biography********************");
+		System.out.println("\n\tName: "+getName());
+		System.out.println("\tFather's Name: "+getFathersName());
+		System.out.println("\tMother's Name: "+getMothersName());
+		System.out.println("\tNationality: "+getNationality());
+		System.out.println("\tGender: "+getGender()+"\n");
+		System.out.println("**************************************************");
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name.toLowerCase();
+	}
+
+	public Country getNationality() {
+		return nationality;
+	}
+
+	public boolean setNationality(String nationality) {
+		for (Country country : Country.values()) {
+			if (country.toString().equals(nationality.toLowerCase())) {
+				this.nationality = country;
+				return true;
+			}
+		}
+		System.out.println("The country name you have entered is invalid: ");
+		return false;
+	}
+
+	public void setNationality(Country nationality) {
+		this.nationality = nationality;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public boolean setGender(String gender) {
+		for (Gender g : Gender.values()) {
+			if (g.toString().equals(gender.toLowerCase())) {
+				this.gender = g;
+				return true;
+			}
+		}
+		System.out.println("Enter valid gender [male/female/other]: ");
+		return false;
+	}
+
+	public String getMothersName() {
+		return mothersName;
+	}
+
+	public void setMothersName(String mothersName) {
+		this.mothersName = mothersName;
+	}
+
+	public String getFathersName() {
+		return fathersName;
+	}
+
+	public void setFathersName(String fathersName) {
+		this.fathersName = fathersName;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	@Override
+	public int compareTo(Object object) {
+		// TODO Auto-generated method stub
+		People person = (People) object;
+
+		return 0;
+	}
+}

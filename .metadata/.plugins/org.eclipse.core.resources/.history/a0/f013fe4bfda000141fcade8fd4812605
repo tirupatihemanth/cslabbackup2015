@@ -1,0 +1,82 @@
+package cs13b027_lab1_2;
+
+public class Student extends People {
+
+	private enum Hostel {
+		saraswathi, tapti, godavari, krishna, cauvery, mahanadhi, tamaraparini, sharavathi
+	};
+
+	private String rollNumber;
+	private Hostel hostel;
+	private double cgpa;
+	private short semester;
+	private short creditsEarned;
+	private TeachingClassEmployee facultyAdvisor;
+
+	public String getRollNumber() {
+		return rollNumber;
+	}
+
+	public void setRollNumber(String rollNumber) {
+		this.rollNumber = rollNumber;
+	}
+
+	public Hostel getHostel() {
+		return hostel;
+	}
+
+	public boolean setHostel(String hostel) {
+		for (Hostel h : Hostel.values()) {
+			if (h.toString().equals(hostel.toLowerCase())) {
+				this.hostel = h;
+				return true;
+			}
+		}
+		System.out.println("Enter Valid Hostel Name: ");
+		return false;
+	}
+
+	public double getCgpa() {
+		return cgpa;
+	}
+
+	public boolean setCgpa(double cgpa) {
+		if (cgpa > 1.0 && cgpa < 10.0) {
+			this.cgpa = cgpa;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public short getSemester() {
+		return semester;
+	}
+
+	public boolean setSemester(short semester) {
+		if (semester < 1 || semester > 12) {
+			System.out.println("Enter a valid semester number: ");
+			return false;
+		} else {
+			this.semester = semester;
+			return true;
+		}
+	}
+
+	public short getCreditsEarned() {
+		return creditsEarned;
+	}
+
+	public void setCreditsEarned(short creditsEarned) {
+		this.creditsEarned = creditsEarned;
+	}
+
+	public TeachingClassEmployee getFacultyAdvisor() {
+		return facultyAdvisor;
+	}
+
+	public void setFacultyAdvisor(TeachingClassEmployee facultyAdvisor) {
+		this.facultyAdvisor = facultyAdvisor;
+	}
+
+}

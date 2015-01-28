@@ -1,0 +1,52 @@
+package cs13b027_lab1_2;
+
+
+
+public class Student extends People{
+
+	private enum Hostel{saraswathi, tapti, godavari, krishna, cauvery, mahanadhi, tamaraparini, sharavathi};
+	private String rollNumber;
+	private Hostel hostel;
+	private double cgpa;
+	private short semester;
+	private short creditsEarned;
+	private TeachingClassEmployee facultyAdvisor;
+	
+	public String getRollNumber() {
+		return rollNumber;
+	}
+	public void setRollNumber(String rollNumber) {
+		this.rollNumber = rollNumber;
+	}
+	public Hostel getHostel() {
+		return hostel;
+	}
+	public void setHostel(Hostel hostel) {
+		this.hostel = hostel;
+	}
+	public double getCgpa() {
+		return cgpa;
+	}
+	public void setCgpa(double cgpa) {
+		this.cgpa = cgpa;
+	}
+	public short getSemester() {
+		return semester;
+	}
+	public void setSemester(short semester) {
+		this.semester = semester;
+	}
+	public short getCreditsEarned() {
+		return creditsEarned;
+	}
+	public void setCreditsEarned(short creditsEarned) {
+		this.creditsEarned = creditsEarned;
+	}
+	public TeachingClassEmployee getFacultyAdvisor() {
+		return facultyAdvisor;
+	}
+	public void setFacultyAdvisor(TeachingClassEmployee facultyAdvisor) {
+		this.facultyAdvisor = facultyAdvisor;
+	}
+	
+}

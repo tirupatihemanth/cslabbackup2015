@@ -1,0 +1,8 @@
+//Interface to be implemented by Quadrilaterals
+public interface QuadFunctions {
+	
+	public double area();
+	
+	public double perimeter();
+	
+}

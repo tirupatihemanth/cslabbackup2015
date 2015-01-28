@@ -1,0 +1,7 @@
+
+public class Node {
+	
+	private Node left, right;
+	private int data;
+	
+}

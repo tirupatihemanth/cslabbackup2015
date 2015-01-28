@@ -1,0 +1,15 @@
+public class MainClass {
+
+	public static void main(String[] args) {
+		Rectangle rectangle = new Rectangle(10.0, 20.0);
+		Square square = new Square(10.0);
+		Parallelogram parallelogram = new Parallelogram(10.0, 20.0, 45.0);
+		System.out.printf("Rectangle Area: %f\n",rectangle.area());
+		System.out.printf("Rectangle Area: %f\n",rectangle.perimeter());
+		System.out.printf("Square Area: %f\n",square.area());
+		System.out.printf("Square Area: %f\n",square.perimeter());
+		System.out.printf("Parallelogram Area: %f\n",parallelogram.area());
+		System.out.printf("Parallelogram Area: %f\n",parallelogram.perimeter());
+
+	}
+}

@@ -1,0 +1,7 @@
+//Rectangle class which inherits from Parallelogram
+public class Rectangle extends Parallelogram implements QuadFunctions{
+
+	public Rectangle(double length, double breadth){
+		super(length,breadth,90);
+	}
+}
