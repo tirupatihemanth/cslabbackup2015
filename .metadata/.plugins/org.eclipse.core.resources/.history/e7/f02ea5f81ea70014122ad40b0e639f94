@@ -1,0 +1,73 @@
+
+public class polarComplex implements IComplex, Comparable<IComplex>{
+	
+	private double absoluteValue, argument;
+	
+	public public polarComplex(double absoluteValue, double argument) {
+		// TODO Auto-generated constructor stub
+		this.absoluteValue = absoluteValue;
+		this.argument = argument;
+	}
+	
+
+	@Override
+	public int compareTo(IComplex o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Re() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Im() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Abs() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Arg() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public IComplex conj() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IComplex log() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IComplex exp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IComplex rotate(double radians) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IComplex stretch(double scale) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
