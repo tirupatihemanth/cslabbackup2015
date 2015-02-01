@@ -1,0 +1,12 @@
+
+public class InsertionSort {
+
+	public int[] sort(int[] arr){
+		int arrlen = arr.length;
+		for(int i=1;i<arrlen-1;i++){
+			if(arr[i]>arr[i-1]){
+				insert()
+			}
+		}
+	}
+}

@@ -9,21 +9,95 @@ public class Student extends People {
 		System.out.println("Admission Date");
 		new Date();
 		System.out.print("Roll Number: ");
-		setRollNumber(input.nextLine());
+		
+		while(!setRollNumber(input.nextLine())){
+			System.out.println("Enter a valid Roll Number: ");
+		}
+		
 		System.out.print("Hostel: ");
-		setHostel(input.nextLine());
+		while(!setHostel(input.nextLine())){
+			System.out.println("Enter Valid Hostel Name: ");
+		}
+		
 		System.out.print("cgpa: ");
 		setCgpa(input.nextDouble());
 		System.out.print("Semester: ");
-		setSemester(input.nextShort());
+		
+		while(!setSemester(input.nextShort())){
+			System.out.println("Enter a valid semester number: ");
+		}
+		
 		System.out.print("Credits Earned: ");
 		setCreditsEarned(input.nextShort());
 		System.out.print("Faculty Advisor: ");
 		setFacultyAdvisor(input.nextLine());
+		
+		if(creditsEarned<15*semester){
+			sendMail(facultyAdvisor);
+		}
+	}
+
+	private void sendMail(String facAdv) {
+		
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		String subject, message, cc;
+		System.out.println("Subject: ");
+		subject = input.nextLine();
+		
+		System.out.println("CC: ");
+		cc = input.nextLine();
+		System.out.println("Message Body: ");
+		message = input.nextLine();
+		style("Sending Mail");
+		System.out.println("To: "+getFacultyAdvisor());
+		System.out.println("CC: "+cc);
+		System.out.println("Subject: "+subject);
+		System.out.println("Message Body");
+		System.out.println("\t"+message);
+		
+		style();
+	}
+	
+	public String getSender() {
+		return sender;
+	}
+
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	private void receiveMail(){
+		style("Received Mail");
+		if(sender.equals("")){
+			System.out.println("Nothing to see here Move Along");
+			style();
+			return;
+		}
+		System.out.println("From: "+ getSender());
+		System.out.println("Subject: "+ getSubject());
+		System.out.println("Message Body");
+		System.out.println("\t"+getMessage());
 	}
 
 	private enum Hostel {
-		saraswathi, tapti, godavari, krishna, cauvery, mahanadhi, tamaraparini, sharavathi
+		saraswathi, tapti, godavari, krishna, cauvery, mahanadhi, tamaraparini, sharavathi,sarayu,sabarmathi
 	};
 
 	private Date admissionDate;
@@ -33,7 +107,9 @@ public class Student extends People {
 	private short semester;
 	private short creditsEarned;
 	private String facultyAdvisor;
-
+	private String sender;
+	private String subject;
+	private String message;
 	public void longBio() {
 		
 		style("Long Bio");
@@ -56,6 +132,7 @@ public class Student extends People {
 		System.out.println("\tCGPA: "+getCgpa());
 		System.out.println("\tSemester: "+getSemester());
 		System.out.println("\tCredits Earned: "+getCreditsEarned());
+
 		
 	}
 
@@ -81,7 +158,6 @@ public class Student extends People {
 			this.rollNumber = rollNumber;
 			return true;
 		} else {
-			System.out.println("Enter a valid Roll Number: ");
 			return false;
 		}
 	}
@@ -97,7 +173,7 @@ public class Student extends People {
 				return true;
 			}
 		}
-		System.out.println("Enter Valid Hostel Name: ");
+		
 		return false;
 	}
 
@@ -120,7 +196,6 @@ public class Student extends People {
 
 	public boolean setSemester(short semester) {
 		if (semester < 1 || semester > 12) {
-			System.out.println("Enter a valid semester number: ");
 			return false;
 		} else {
 			this.semester = semester;

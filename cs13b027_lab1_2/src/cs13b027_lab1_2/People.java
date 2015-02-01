@@ -2,22 +2,28 @@ package cs13b027_lab1_2;
 
 import java.util.Scanner;
 
-public class People implements Comparable {
+public class People implements Comparable{
 	
 	
 	public People() {
 		Scanner input = new Scanner(System.in);
-		
 		System.out.print("Full Name: ");
 		setName(input.nextLine());
 		System.out.print("Father's Name: ");
 		setFathersName(input.nextLine());
 		System.out.print("Mother's Name: ");
 		setMothersName(input.nextLine());
-		System.out.print("Nationality: ");
-		setNationality(input.nextLine());
+		System.out.print("Country: ");
+		while(!setNationality(input.nextLine())){
+			System.out.println("Please enter a valid country: ");
+		}
+		
 		System.out.print("Gender: ");
-		setGender(input.nextLine());
+		while(!setGender(input.nextLine())){
+			System.out.println("Enter valid gender [male/female/other]: ");
+		}
+		
+		
 		System.out.print("Department: ");
 		setDepartment(input.nextLine());
 		
@@ -28,7 +34,7 @@ public class People implements Comparable {
 	};
 
 	private enum Gender {
-		male, female, f, other, o
+		male, M, m, female, f, F, other, o
 	};
 
 	private String name;
@@ -70,7 +76,6 @@ public class People implements Comparable {
 				return true;
 			}
 		}
-		System.out.println("The country name you have entered is invalid: ");
 		return false;
 	}
 
@@ -93,7 +98,7 @@ public class People implements Comparable {
 				return true;
 			}
 		}
-		System.out.println("Enter valid gender [male/female/other]: ");
+		
 		return false;
 	}
 

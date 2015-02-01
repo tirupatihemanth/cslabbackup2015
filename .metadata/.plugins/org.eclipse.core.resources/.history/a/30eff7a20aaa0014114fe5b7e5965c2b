@@ -1,0 +1,7 @@
+//This is the improvised version of bubble sort The bubble sort algorithm can be easily optimized by 
+//observing that the n-th pass finds the n-th largest element and puts it into its final place. 
+//So, the inner loop can avoid looking at the last n-1 items when running for the n-th time
+
+public class BubbleSort {
+
+}
