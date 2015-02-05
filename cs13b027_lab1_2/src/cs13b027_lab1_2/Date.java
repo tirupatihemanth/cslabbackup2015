@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Date {
 
+	//class for Encoding Date
 	private short year;
 	private short month;
 	private short date;

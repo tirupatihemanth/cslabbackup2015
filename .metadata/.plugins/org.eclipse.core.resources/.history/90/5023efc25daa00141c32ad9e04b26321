@@ -1,0 +1,18 @@
+package cs13b027_lab1_2;
+
+public class MainClass {
+	public static void main(String[] args) {
+
+		System.out.println("Faculty Details are Required Here: ");
+		TeachingClassEmployee facultyAdvisor = new TeachingClassEmployee();
+		System.out.println("Student Details are Required Here:");
+		BtechDDStudent bddStudent = new BtechDDStudent();
+		bddStudent.setFacultyAdvisor(facultyAdvisor);
+		bddStudent.shortBio();
+		bddStudent.longBio();
+		bddStudent.sendMail(facultyAdvisor);
+		facultyAdvisor.shortBio();
+		facultyAdvisor.longBio();
+		facultyAdvisor.receiveMail();
+	}
+}

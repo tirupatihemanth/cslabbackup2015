@@ -1,9 +1,137 @@
 package cs13b027_lab1_2;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class MainClass {
+	//Driver Class which runs over all other classes
+	
+	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) {
+
+		ArrayList<TeachingClassEmployee> professors = new ArrayList<TeachingClassEmployee>();
+		ArrayList<BtechDDStudent> bTechStudents = new ArrayList<BtechDDStudent>();
+		ArrayList<MTechStudent> mTechStudents = new ArrayList<MTechStudent>();
+		ArrayList<PhdStudent> phdStudents = new ArrayList<PhdStudent>();
+		ArrayList<NonTeachingClassEmployee> nonprofessors = new ArrayList<NonTeachingClassEmployee>();
 		
-		People person = new People();
-		person.shortBio();
+		System.out.println("**********Academic Section Database Management**************\n");
+		
+		System.out.println("Enter y to add new Record: ");
+		
+		 while(input.nextLine().equalsIgnoreCase("y")) {
+			System.out.println("Please Enter the appropriate word: ");
+			System.out
+					.printf("\t'b' for BTech/ DD Students\n\t'm' for MTech Students\n\t'p' for Phd Students\n\t'P' for Professors\n\t'n' for Non Teching Class Employees\n");
+			switch(input.nextLine().charAt(0)){
+			case 'p':
+				phdStudents.add(new PhdStudent(takeFacad(professors)));
+				break;
+			case 'm':
+				mTechStudents.add(new MTechStudent(takeFacad(professors)));
+				break;
+			case 'P':
+				professors.add(new TeachingClassEmployee());
+				break;
+			case 'b':
+				bTechStudents.add(new BtechDDStudent(takeFacad(professors)));
+				break;
+			case 'n':
+				nonprofessors.add(new NonTeachingClassEmployee());
+				break;
+			default:
+				System.out.println("Invalid input.");
+			}
+			System.out.println("Do you wish enter records");
+		}
+		
+		System.out.println("Do You want to Read the Records");
+		
+		if(input.nextLine().equalsIgnoreCase("y")){
+			
+			if(!professors.isEmpty()){
+				System.out.println("Professor Records: ");
+				for(TeachingClassEmployee prof: professors){
+					prof.shortBio();
+					prof.longBio();
+				}
+			}
+			else{
+				System.out.println("No records of professors found");
+			}
+			
+			if(!bTechStudents.isEmpty()){
+				System.out.println("Professor Records: ");
+				for(BtechDDStudent prof: bTechStudents){
+					prof.shortBio();
+					prof.longBio();
+				}
+			}
+			else{
+				System.out.println("No records of bTech Students found");
+			}
+			
+			if(!phdStudents.isEmpty()){
+				System.out.println("Phd Students Records: ");
+				for(PhdStudent prof: phdStudents){
+					prof.shortBio();
+					prof.longBio();
+				}
+			}
+			else{
+				System.out.println("No records of Phd Students found");
+			}
+			
+			if(!mTechStudents.isEmpty()){
+				System.out.println("MTech Students Records: ");
+				for(MTechStudent prof: mTechStudents){
+					prof.shortBio();
+					prof.longBio();
+				}
+			}
+			else{
+				System.out.println("No records of mTech Students found");
+			}
+			
+			if(!nonprofessors.isEmpty()){
+				System.out.println("Non Teaching Class Records: ");
+				for(NonTeachingClassEmployee prof: nonprofessors){
+					prof.shortBio();
+					prof.longBio();
+				}
+			}
+			else{
+				System.out.println("No records of professors found");
+			}
+			
+		}
+		System.out.println("************Good Bye!!!!*************");
+		
+//		System.out.println("Faculty Details are Required Here: \n");
+//		TeachingClassEmployee facultyAdvisor = new TeachingClassEmployee();
+//		System.out.println("Student Details are Required Here: \n");
+//		BtechDDStudent bddStudent = new BtechDDStudent(facultyAdvisor);
+//		bddStudent.setFacultyAdvisor(facultyAdvisor);
+//		bddStudent.shortBio();
+//		bddStudent.longBio();
+//		facultyAdvisor.shortBio();
+//		facultyAdvisor.longBio();
+//		bddStudent.sendMail(facultyAdvisor);
+//		facultyAdvisor.receiveMail();
+		
+	}
+	
+	static TeachingClassEmployee takeFacad(ArrayList<TeachingClassEmployee> professors){
+	
+		System.out.println("Enter Name Of Your Faculty Advisor To Link to your faculty Advisor: ");
+		while(true){
+			String facAd = input.nextLine();
+			for(TeachingClassEmployee prof: professors){
+				if(prof.compareTo(facAd)){
+					return prof;
+				}
+			}
+			System.out.println("The faculty name you have entered don't match with any of our records.\nPlease Enter a valid name:");
+		}
 	}
 }

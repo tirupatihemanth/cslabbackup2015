@@ -1,0 +1,16 @@
+package cs13b027_lab1_2;
+
+public class MainClass {
+	public static void main(String[] args) {
+
+		TeachingClassEmployee facultyAdvisor = new TeachingClassEmployee();
+		BtechDDStudent bddStudent = new BtechDDStudent();
+		bddStudent.setFacultyAdvisor(facultyAdvisor);
+		bddStudent.shortBio();
+		bddStudent.longBio();
+		bddStudent.sendMail(facultyAdvisor);
+		facultyAdvisor.shortBio();
+		facultyAdvisor.longBio();
+		facultyAdvisor.receiveMail();
+	}
+}

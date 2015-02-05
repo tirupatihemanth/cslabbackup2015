@@ -2,9 +2,9 @@ package cs13b027_lab1_2;
 
 import java.util.Scanner;
 
-public class People implements Comparable{
-	
-	
+public class People implements Comparable {
+
+	//A class represting any person of IITM
 	public People() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("Full Name: ");
@@ -14,23 +14,23 @@ public class People implements Comparable{
 		System.out.print("Mother's Name: ");
 		setMothersName(input.nextLine());
 		System.out.print("Country: ");
-		while(!setNationality(input.nextLine())){
+		while (!setNationality(input.nextLine())) {
 			System.out.println("Please enter a valid country: ");
 		}
-		
+
 		System.out.print("Gender: ");
-		while(!setGender(input.nextLine())){
+		while (!setGender(input.nextLine())) {
 			System.out.println("Enter valid gender [male/female/other]: ");
 		}
-		
-		
+
 		System.out.print("Department: ");
 		setDepartment(input.nextLine());
-		
+
 	}
 
+	//Enum for input verification
 	private enum Country {
-		india, america, germany, russia, australia, italy, china, indonesia
+		india, america, germany, russia, australia, italy, china, indonesia, malasia
 	};
 
 	private enum Gender {
@@ -44,19 +44,21 @@ public class People implements Comparable{
 	private String fathersName;
 	private String department;
 
-	public void shortBio(){
-		
+	//public method for shortBIo
+	public void shortBio() {
+
 		style("Short Biography");
-		System.out.println("\tName: "+getName());
-		System.out.println("\tFather's Name: "+getFathersName());
-		System.out.println("\tMother's Name: "+getMothersName());
-		System.out.println("\tNationality: "+getNationality());
-		System.out.println("\tGender: "+getGender());
-		System.out.println("\tDepartment: "+getDepartment());
+		System.out.println("\tName: " + getName());
+		System.out.println("\tFather's Name: " + getFathersName());
+		System.out.println("\tMother's Name: " + getMothersName());
+		System.out.println("\tNationality: " + getNationality());
+		System.out.println("\tGender: " + getGender());
+		System.out.println("\tDepartment: " + getDepartment());
 		style();
-		
+
 	}
-	
+
+	//gettters and setters
 	public String getName() {
 		return name;
 	}
@@ -71,7 +73,7 @@ public class People implements Comparable{
 
 	public boolean setNationality(String nationality) {
 		for (Country country : Country.values()) {
-			if (country.toString().equals(nationality.toLowerCase())) {
+			if (country.toString().equalsIgnoreCase(nationality)) {
 				this.nationality = country;
 				return true;
 			}
@@ -98,7 +100,7 @@ public class People implements Comparable{
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -126,36 +128,54 @@ public class People implements Comparable{
 		this.department = department;
 	}
 
+	//Compare function which compares any two objects
 	@Override
 	public int compareTo(Object object) {
 		// TODO Auto-generated method stub
 		People person = (People) object;
 		String[] nameComponents = person.name.split(" ");
-		String nameSpace = " "+name+" ";
-		for(int i=0;i<nameComponents.length;i++){
-			if(!nameSpace.contains(" "+nameComponents[i]+" ")){
+		String nameSpace = " " + name + " ";
+		for (int i = 0; i < nameComponents.length; i++) {
+			if (!nameSpace.contains(" " + nameComponents[i] + " ")) {
 				break;
-			}
-			else if(i == nameComponents.length-1){
+			} else if (i == nameComponents.length - 1) {
 				return 0;
 			}
 		}
 		return 1;
 	}
 	
-	public String toString(){
+	public boolean compareTo(String str){
+		
+		String[] nameComponents = str.split(" ");
+		String nameSpace = " " + name + " ";
+		for (int i = 0; i < nameComponents.length; i++) {
+			if (!nameSpace.contains(" " + nameComponents[i] + " ")) {
+				break;
+			} else if (i == nameComponents.length - 1) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
+
+	public String toString() {
 		String person = name;
 		return person;
 	}
-	
-	public void style(String str){
-		System.out.println("\n*************** "+str+"********************\n");
-		
+
+	//adds styles to all objects
+	public void style(String str) {
+		System.out.println("\n*************** " + str
+				+ "********************\n");
+
 	}
-	
-	public void style(){
-		System.out.println("\n***************************************************\n");
-		
+
+	public void style() {
+		System.out
+				.println("\n***************************************************\n");
+
 	}
-	
+
 }

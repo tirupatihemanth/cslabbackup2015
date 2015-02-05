@@ -1,7 +1,0 @@
-
-public class Rectangle extends Parallelogram{
-
-	public Rectangle(double length, double breadth){
-		super(length,breadth,90);
-	}
-}

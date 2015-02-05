@@ -1,12 +1,13 @@
 package cs13b027_lab1_2;
 
-public class NonTeachingClassEmployee extends Employee{
+public class NonTeachingClassEmployee extends Employee {
 
-	public void longBio(){
+	//class representing the nonTeachingEmployee class
+	public void longBio() {
 		style("Long Biography");
 		data();
-		System.out.println("\tclass: "+"Non Teaching Class");
+		System.out.println("\tclass: " + "Non Teaching Class");
 		style();
 	}
-	
+
 }

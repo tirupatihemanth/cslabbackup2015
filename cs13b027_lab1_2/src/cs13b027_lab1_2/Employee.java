@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class Employee extends People {
 
+	//Any Employee of IITM
 	private String employeeId;
 	private Date dateOfJoining;
 	String designation;
-	
-	public void Employee(){
-		
+
+	public Employee() {
+
 		Scanner input = new Scanner(System.in);
 		System.out.print("Employee Id: ");
 		setEmployeeId(input.nextLine());
@@ -17,11 +18,11 @@ public class Employee extends People {
 		new Date();
 		System.out.print("Designation: ");
 		setDesignation(input.nextLine());
-		
+
 	}
-	
-	public void data(){
-		
+
+	public void data() {
+
 		System.out.println("\tName: " + getName());
 		System.out.println("\tEmplyee Id: " + getEmployeeId());
 		System.out.println("\tFather's Name: " + getFathersName());
@@ -30,16 +31,16 @@ public class Employee extends People {
 		System.out.println("\tGender: " + getGender());
 		System.out.println("\tDepartment: " + getDepartment());
 		System.out.println("\tDate Of Joining: " + getDateOfJoining());
-		System.out.println("\tDesignation: "+getDesignation());
+		System.out.println("\tDesignation: " + getDesignation());
 	}
 
 	public void longBio() {
-		
+
 		style("Long Biography");
 		data();
 		style();
 	}
-	
+
 	public String getDesignation() {
 		return designation;
 	}
@@ -55,7 +56,6 @@ public class Employee extends People {
 	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
-
 
 	public String getEmployeeId() {
 		return employeeId;

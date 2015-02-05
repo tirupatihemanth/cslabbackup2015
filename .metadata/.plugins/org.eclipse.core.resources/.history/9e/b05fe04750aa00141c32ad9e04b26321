@@ -1,0 +1,10 @@
+package cs13b027_lab1_2;
+
+public class MainClass {
+	public static void main(String[] args) {
+		
+		BtechDDStudent bddStudent = new BtechDDStudent();
+		TeachingClassEmployee facultyAdvisor = new TeachingClassEmployee();
+		
+	}
+}
