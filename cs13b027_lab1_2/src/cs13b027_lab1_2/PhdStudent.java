@@ -1,0 +1,24 @@
+package cs13b027_lab1_2;
+
+public class PhdStudent extends Student {
+
+	//class represting students of IITM
+	public PhdStudent(TeachingClassEmployee facultyAdvisor){
+		super(facultyAdvisor);
+		setFacultyAdvisor(facultyAdvisor);
+	}
+	
+	public void longBio() {
+		style("Long Biography");
+		data();
+		System.out.println("\tclass: " + "Phd Student");
+		style();
+	}
+
+	private void checkCreditsEarned() {
+		if (getCreditsEarned() < 12 * (getSemester() - 1)) {
+			sendMail(getFacultyAdvisor());
+		}
+	}
+
+}
