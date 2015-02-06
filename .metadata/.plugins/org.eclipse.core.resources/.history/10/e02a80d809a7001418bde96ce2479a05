@@ -1,0 +1,37 @@
+package cs13b027_lab1_2;
+
+public class Employee extends People {
+
+	private String employeeId;
+	private Date dateOfJoining;
+
+	public void longBio() {
+		
+		style("Long Biography");
+		data();
+		style();
+	}
+
+
+
+
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
+	}
+
+	public Employee() {
+
+	}
+
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+}

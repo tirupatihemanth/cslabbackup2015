@@ -1,0 +1,99 @@
+// Complex class which implements IComparable interface using complex numbers in argand plane
+public class Complex implements IComplex, Comparable {
+
+	double real, imaginary;
+
+	//Constructor for Complex class
+	public Complex(double real, double imaginary) {
+		this.real = real;
+		this.imaginary = imaginary;
+	}
+
+	//To be Overridden because of Comparable Interface
+	//To compare any two objects of the type IComplex
+	@Override
+	public int compareTo(Object object) {
+		// TODO Auto-generated method stub
+		IComplex icomplex = (IComplex) object;
+		if (Abs() == icomplex.Abs()) {
+			return 0;
+		} else if (Abs() > icomplex.Abs()) {
+			return 1;
+		} else
+			return -1;
+	}
+
+	@Override
+	public double Re() {
+		//Returns Real part of the Complex Numbers
+		return real;
+	}
+
+	@Override
+	public double Im() {
+		//Returns complex part of the Complex Numbers
+		return imaginary;
+	}
+
+	@Override
+	public double Abs() {
+
+		//Returns the absolute value of the Complex Number
+		return Math.sqrt(real * real + imaginary * imaginary);
+	}
+
+	@Override
+	public double Arg() {
+		//Returns the argument of the Complex Number
+		return Arg(real, imaginary);
+	}
+
+	public double Arg(double real, double imaginary) {
+		// Returns the argument of the Complex Number for a given real and imaginary parts
+
+		if (real > 0) {
+			return Math.atan(imaginary / real);
+		} else if (real < 0 && imaginary > 0)
+			return Math.PI - Math.atan(-real / imaginary);
+		else if (real < 0 && imaginary < 0)
+			return Math.PI + Math.atan(real / imaginary);
+		else if (imaginary == 0)
+			return Math.PI / 2;
+		else
+			return 0;
+
+	}
+
+	@Override
+	public IComplex conj() {
+		// Returns complex of a complex number
+		return new Complex(real, -imaginary);
+	}
+
+	@Override
+	public IComplex log() {
+		// Returns lograithm of a complex Number
+		return new Complex(Math.log(Abs()), Arg());
+	}
+
+	@Override
+	public IComplex exp() {
+		// Returns exponential of the complex number
+		return new Complex(Math.exp(real) * Math.cos(imaginary), Math.exp(real)
+				* Math.sin(imaginary));
+	}
+
+	@Override
+	public IComplex rotate(double radians) {
+		// Rotate a given complex number about origin
+		return new Complex(Abs() * Math.cos(Arg() + radians), Abs()
+				* Math.sin(Arg() + radians));
+	}
+
+	@Override
+	public IComplex stretch(double scale) {
+		// To scale the complex number i.e only magnitude
+		return new Complex(scale*real, scale*imaginary);
+	}
+
+}

@@ -1,0 +1,82 @@
+import java.awt.image.ImagingOpException;
+
+public class PolarComplex implements IComplex, Comparable {
+
+	// Argument is in radians i.e stored as a double for computation
+	double absoluteValue, argument;
+
+	public PolarComplex(double absoluteValue, double argument) {
+		// TODO Auto-generated constructor stub
+		this.absoluteValue = absoluteValue;
+		this.argument = argument;
+	}
+
+	@Override
+	public int compareTo(Object object) {
+		// TODO Auto-generated method stub
+		IComplex icomplex = (IComplex) object;
+		if(Re() == icomplex.Re() && Im() == icomplex.Im()){
+			return 0;
+		}
+		else
+			return 1;
+	}
+
+	@Override
+	public double Re() {
+		// TODO Auto-generated method stub
+		return absoluteValue * Math.cos(argument);
+	}
+
+	@Override
+	public double Im() {
+		// TODO Auto-generated method stub
+		return absoluteValue * Math.sin(argument);
+	}
+
+	@Override
+	public double Abs() {
+		// TODO Auto-generated method stub
+		return absoluteValue;
+	}
+
+	@Override
+	public double Arg() {
+		// TODO Auto-generated method stub
+		return argument;
+	}
+
+	@Override
+	public IComplex conj() {
+		// TODO Auto-generated method stub
+		return new PolarComplex(absoluteValue, -argument);
+	}
+
+	@Override
+	public IComplex log() {
+		// TODO Auto-generated method stub
+		return new PolarComplex(Math.sqrt(Math.log(absoluteValue)
+				* Math.log(absoluteValue) + Arg() * Arg()),
+				Im() > 0 ? Math.atan(Math.log(Abs()) / Arg()) : Math.atan(Math
+						.atan(Math.log(Abs()) / Arg())) - Math.PI);
+	}
+
+	@Override
+	public IComplex exp() {
+		// TODO Auto-generated method stub
+		return new PolarComplex(Math.exp(absoluteValue*Math.cos(argument)), absoluteValue*Math.sin(argument));
+	}
+
+	@Override
+	public IComplex rotate(double radians) {
+		// TODO Auto-generated method stub
+		return new PolarComplex(absoluteValue, argument + radians);
+	}
+
+	@Override
+	public IComplex stretch(double scale) {
+		// TODO Auto-generated method stub
+		return new PolarComplex(2 * absoluteValue, argument);
+	}
+
+}

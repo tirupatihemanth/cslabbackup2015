@@ -1,0 +1,14 @@
+package cs13b027_lab1_2;
+
+import java.util.Scanner;
+
+public class MTechStudent extends Student{
+	
+	public void longBio(){
+		style("Long Biography");
+		data();
+		System.out.println("\tclass: "+"BTech/DD Student");
+		style();
+	}
+	
+}

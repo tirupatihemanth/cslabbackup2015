@@ -1,0 +1,79 @@
+
+public class Complex implements IComplex,Comparable{
+
+	double real, imaginary;
+	
+	public Complex(double real, double imaginary){
+		this.real = real;
+		this.imaginary = imaginary;
+	}
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Re() {
+		// TODO Auto-generated method stub
+		return real;
+	}
+
+	@Override
+	public double Im() {
+		// TODO Auto-generated method stub
+		return imaginary;
+	}
+
+	@Override
+	public double Abs() {
+		
+		// TODO Auto-generated method stub
+		return Math.sqrt(real*real+imaginary*imaginary);
+	}
+
+	@Override
+	public double Arg(){
+		return Arg(real,imaginary);
+	}
+	
+	public double Arg(double real, double imaginary) {
+		// TODO Auto-generated method stub
+		if(imaginary >0)
+			return Math.atan(real/imaginary);
+		else
+			return Math.atan(real/imaginary) - Math.PI;
+		
+	}
+
+	@Override
+	public IComplex conj() {
+		// TODO Auto-generated method stub
+		return new Complex(real,-imaginary);
+	}
+
+	@Override
+	public IComplex log() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IComplex exp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IComplex rotate(double radians) {
+		// TODO Auto-generated method stub
+		return new Complex(Abs()*Math.cos(Arg()+radians), Abs()*Math.sin(Arg()+radians));
+	}
+
+	@Override
+	public IComplex stretch(double scale) {
+		// TODO Auto-generated method stub
+		return new Complex(Math.sqrt(2)*real, Math.sqrt(2)*imaginary);
+	}
+
+}

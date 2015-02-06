@@ -1,0 +1,5 @@
+//This is the improvised version of bubble sort where we don't check the whole list each time as the last elements in the list get sorted each time we make swaps all over the list in one iteration
+
+public class BubbleSort {
+
+}
