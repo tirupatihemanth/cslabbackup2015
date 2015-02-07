@@ -5,7 +5,7 @@ package serial;
  */
 import java.io.Serializable;
 
-public class StudentDetails implements Serializable{
+public class StudentDetails implements Serializable,Comparable<StudentDetails>{
 	/**
 	 * 
 	 */
@@ -49,4 +49,16 @@ public class StudentDetails implements Serializable{
 	public void setgender(String gender) {
 		this.gender = gender;
 	}
+	@Override
+	public int compareTo(StudentDetails student) {
+		// TODO Auto-generated method stub
+		
+		return getName().compareToIgnoreCase(student.getName());
+		
+	}
+	
+	public String toString(){
+		return "Name: "+getName()+"\n"+"Gender: "+getgender()+"\n"+"Age: "+getAge();
+	}
+	
 }
