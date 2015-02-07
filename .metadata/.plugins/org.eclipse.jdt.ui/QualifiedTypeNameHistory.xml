@@ -18,11 +18,12 @@
 <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
 <fullyQualifiedTypeName name="cs13b027_lab1_2.Student"/>
 <fullyQualifiedTypeName name="cs13b027_lab1_2.Employee"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="cs13b027_lab1_2.NonTeachingClassEmployee"/>
 <fullyQualifiedTypeName name="cs13b027_lab1_2.TeachingClassEmployee"/>
 <fullyQualifiedTypeName name="cs13b027_lab1_2.PhdStudent"/>
 <fullyQualifiedTypeName name="cs13b027_lab1_2.BtechDDStudent"/>
 <fullyQualifiedTypeName name="cs13b027_lab1_2.MTechStudent"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.Character"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,35 @@
+package readandreverse;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+/**
+ * @author <Enter your name>
+ * CS2810- File Reading Assignment
+ */
+public class StringReader {
+
+	/**
+	 * @param args
+	 */
+	
+	public static void main(String[] args) {
+		// TODO Read the file "input.txt". For each line find a word-unit reverse and print it.
+		
+		
+		
+			FileReader input1 = new FileReader("../../Input.txt");
+			BufferedReader input = new BufferedReader();
+			
+
+	}
+	
+	public static String reverse(String input){
+		// TODO Find a word-unit reverse of the input string and return.
+		return null;
+	}
+
+}

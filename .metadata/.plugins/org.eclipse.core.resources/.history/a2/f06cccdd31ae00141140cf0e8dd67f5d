@@ -1,0 +1,61 @@
+package readandreverse;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/**
+ * @author <Enter your name>
+ * CS2810- File Reading Assignment
+ */
+public class StringReader {
+
+	/**
+	 * @param args
+	 */
+	
+	public static void main(String[] args) {
+		// TODO Read the file "input.txt". For each line find a word-unit reverse and print it.
+		
+			//System.out.println(System.getProperty());
+			FileInputStream stream = null;
+			try {
+				stream = new FileInputStream("./../../Input.txt");
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.exit(1);
+			}
+			BufferedReader input = new BufferedReader(new InputStreamReader(stream));
+			String line = null;
+			try {
+				line = input.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.exit(1);
+			}
+			
+			System.out.println(reverse(line));
+
+	}
+	
+	
+	public static String reverse(String input){
+		// TODO Find a word-unit reverse of the input string and return.
+		String[] str = input.split(" ");
+		String output ="";
+		int length = str.length;
+		str[length-1] = str[length-1].substring(0, str[length-1].length()-1);
+		str[0].toLowerCase();
+		str[length-1] = Character.toUpperCase(str[length-1].charAt(0))+str[length-1].substring(1);
+		for(int i=str.length-1;i>=0;i--){
+			output+=str[i]+" ";
+		}
+		output = output.trim();
+		return output;
+	}
+
+}

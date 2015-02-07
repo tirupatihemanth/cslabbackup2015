@@ -1,0 +1,21 @@
+package readandreverse;
+/**
+ * @author <Enter your name>
+ * CS2810- File Reading Assignment
+ */
+public class StringReader {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Read the file "input.txt". For each line find a word-unit reverse and print it.
+
+	}
+	
+	public static String reverse(String input){
+		// TODO Find a word-unit reverse of the input string and return.
+		return null;
+	}
+
+}
