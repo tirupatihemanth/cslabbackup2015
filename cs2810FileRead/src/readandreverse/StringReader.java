@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.LinkedList;
 
 /**
  * @author Tirupati Hemanth Kumar CS2810- File Reading Assignment
@@ -66,8 +67,8 @@ public class StringReader {
 		try {
 
 			while ((line = input.readLine()) != null) {
-				System.out.println(reverse(line));
-				// output.write(reverse(line)+"\n");
+				//System.out.println(reverse(line));
+				 output.write(reverse(line)+"\n");
 			}
 
 		} catch (IOException e) {
@@ -99,30 +100,89 @@ public class StringReader {
 		// "The \"CS2810 lab\" got cancelled due to an India-Pakistan match.";
 		// input = "a\"b c\"d e \"f g h \"d e.";
 		// input = "\"a b c\".";
-		input = "Ram is a very. Good boy.";
-		String[] str = input.split("\"");
+		//input = "Ram is a very. Good boy.";
 
-		for (String temp : str) {
+		//input = "\"hello hi\".";
+		//input = "ICC has confirmed. It's not bad performance, India has just been 'rested' from the Carlton Series finals.";
+		char c = input.charAt(input.length()-1);
+		input = input.substring(0, input.length()-1);
+		String[] str = input.split("\"");
+		
+/*		for (String temp : str) {
 			System.out.println("temp: " + temp);
 		}
-
+*/
+		
 		String output = "";
 		int length = str.length;
-		str[length - 1] = str[length - 1].substring(0,
-				str[length - 1].length() - 1);
+		String[] temp;
 
 		for (int i = length - 1; i >= 0; i--) {
-			// System.out.println(str[i]);
-			// str[i] = str[i].trim();
 
 			if (str[i].equals(null) || str[i].equals(" ")) {
 				continue;
 			}
+			
 			if (i % 2 == 0) {
-				String[] temp = str[i].split(" ");
-
-				for (int j = 0; j < temp.length; j++) {
-
+				temp = str[i].split(" ");
+				
+				for (int j = temp.length-1; j>=0 ; j--) {
+					
+					if(temp[j].contains(".") || temp[j].contains("?")){
+						if(j>0){
+							temp[j-1] = capitalise(temp[j-1]);
+							//System.out.print(temp[j-1]+" ");
+							if(j<temp.length-1){
+								
+								if(temp[j+1].length()>1){
+									if(temp[j+1].charAt(1)>97){
+										temp[j+1] = temp[j+1].toLowerCase();
+									}
+								}
+								else{
+									temp[j+1] = temp[j+1].toLowerCase();
+								}
+								
+							}
+						}
+					}
+					
+					
+					if( i == 0 && j == 0){
+						
+						if(temp[j].length()>1){
+							
+							if(temp[j].charAt(1)>97){
+								temp[j] = temp[j].toLowerCase();
+							}
+							
+						}
+						else{
+							temp[j] = temp[j].toLowerCase();
+						}
+						
+						if(!Character.isAlphabetic(temp[j].charAt(temp[j].length()-1))){
+							temp[j] = temp[j].substring(0, temp[j].length()-1);
+						}
+						//output+=temp[j]+" ";
+						//output+=capitalise(temp[j])+" ";
+						
+					}
+					else if(i == length-1 && j == temp.length-1){
+						temp[j] = capitalise(temp[j]);
+						if(temp[j].equals("")){
+							continue;
+						}
+						//output+=temp[j]+" ";
+					}
+					else{
+						//output+=temp[j]+" ";
+					}
+					
+				}
+				
+				for(int j = temp.length-1;j>=0;j--){
+					output+=temp[j]+" ";
 				}
 
 			} else {
@@ -131,22 +191,23 @@ public class StringReader {
 		}
 
 		output = output.substring(0, output.length() - 1);
-		output += ".";
+		output += c;
 		return output;
 
 	}
 
+	
 	private static String capitalise(String str) {
 		// TODO Auto-generated method stub
 		// System.out.println(str);
 
-		if (str.equals(null)) {
-			return null;
+		if (str.equals("")) {
+			return str;
 		}
 
 		if (Character.isAlphabetic(str.charAt(0))) {
 			if (str.length() > 1) {
-				str += Character.toUpperCase(str.charAt(0)) + str.substring(1);
+				str = Character.toUpperCase(str.charAt(0)) + str.substring(1);
 			} else {
 				str = "" + Character.toUpperCase(str.charAt(0));
 			}
@@ -154,5 +215,7 @@ public class StringReader {
 		} else
 			return str;
 	}
+	
+	
 
 }
