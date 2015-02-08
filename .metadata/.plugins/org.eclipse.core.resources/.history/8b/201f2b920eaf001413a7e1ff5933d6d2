@@ -1,0 +1,36 @@
+package cs13b027_lab2_1;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class MainClass {
+
+	public static void main(String[] args){
+		
+		Random random = new Random();
+		random.setSeed(System.currentTimeMillis());
+		long length;
+		
+		ArrayList<Integer> iArrayList = null;
+		LinkedList<Integer> iLinkedList = null;
+		
+//		ArrayList<String> sArrayList = null;
+//		LinkedList<String> sLinkedList = null;
+		
+		for(int i=2;i<=9;i++){
+			length = (long)Math.pow(10, i);
+			while((length=length-1)>=0){
+				iArrayList.add(random.nextInt(500));
+			}
+		}
+		
+		for(int i=2;i<=9;i++){
+			length = (long)Math.pow(10, i);
+			while((length=length-1)>=0){
+				iLinkedList.add(random.nextInt(500));
+			}
+		}
+		
+	}
+}

@@ -1,0 +1,71 @@
+package cs13b027_lab2_1;
+
+import java.util.LinkedList;
+import java.util.List;
+
+public class Sort<T extends Comparable<T>> {
+
+	private List<T> list;
+	
+	public Sort(List<T> list){
+		this.list = list;
+	}
+	
+	public void setList(List<T> list){
+		this.list = list;
+	}
+	
+	public void insertionSort(){
+		insertionSort(this.list);
+	}
+	
+	public void insertionSort(List<T> list){
+		int j;
+		T temp;
+		for(int i=2;i<list.size();i++){
+			j=i;
+			while(list.get(j).compareTo(list.get(j-1)) < 0){
+				temp = list.get(j-1);
+				list.set(j-1, list.get(j));
+				list.set(j, temp);
+				j--;
+				if(j==0)
+					break;
+			}
+		}
+		
+	}
+	
+	public void mergeSort(){
+		mergeSort(this.list);
+	}
+	
+	public void mergeSort(List<T> list){
+		mergeSort(0, list.size()-1);
+	}
+	
+	public void mergeSort(int a, int b){
+		
+		if(a==b){
+			return;
+		}
+	
+		mergeSort(a,(a+b)/2);
+		mergeSort((a+b)/2+1,b);
+		
+		merge(a, (a+b)/2, b);
+	}
+	
+	private void merge(int a, int b, int c){
+		
+		LinkedList<T> tempList = new LinkedList<T>();
+		
+		int i=a,j=b+1;
+		
+		while(true){
+			
+		}
+		
+	}
+	
+}

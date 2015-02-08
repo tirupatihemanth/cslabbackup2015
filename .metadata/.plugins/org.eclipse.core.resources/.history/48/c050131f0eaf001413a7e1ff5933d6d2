@@ -1,0 +1,8 @@
+package cs13b027_lab2_1;
+
+public class MainClass {
+
+	public static void main(String[] args){
+		
+	}
+}

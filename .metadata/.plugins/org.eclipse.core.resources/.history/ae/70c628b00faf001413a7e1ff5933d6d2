@@ -1,0 +1,23 @@
+package cs13b027_lab2_1;
+
+import java.util.List;
+
+public class Sort<T extends Comparable<T>> {
+
+	private List<T> list;
+	
+	public Sort(List<T> list){
+		this.list = list;
+	}
+	
+	public void setList(List<T> list){
+		this.list = list;
+	}
+	
+	public void insertionSort(){
+		
+	}
+	
+	
+	
+}
