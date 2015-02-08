@@ -1,0 +1,78 @@
+package cs13b027_lab2_1;
+
+import java.awt.datatransfer.ClipboardOwner;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+
+		Random random = new Random();
+		random.setSeed(System.currentTimeMillis());
+		long length, startTime, endTime, totalTime=0L;
+
+		ArrayList<Integer> iArrayList = new ArrayList<Integer>();
+		LinkedList<Integer> iLinkedList = new LinkedList<Integer>();
+		ArrayList<Integer> iArrayListClone = new ArrayList<Integer>();
+		LinkedList<Integer> iLinkedListClone = new LinkedList<Integer>();
+		
+		// ArrayList<String> sArrayList = null;
+		// LinkedList<String> sLinkedList = null;
+
+		Sort<Integer> sort = new Sort<Integer>(iArrayList);
+
+		for (int i = 2; i <= 5; i++) {
+			length = (long) Math.pow(10, i);
+			while ((length = length - 1) >= 0) {
+				iArrayList.add(random.nextInt(5000));
+			}
+
+			clone(iArrayListClone, iArrayList);
+			
+			for(int j=1;j<=15;j++){
+				
+				if(j<=5){
+					sort.insertionSort();
+				}
+				
+				else{
+					startTime = System.nanoTime();
+					sort.insertionSort();
+					endTime = System.nanoTime();
+					totalTime+=endTime-startTime;
+				}
+				clone(iArrayList,iArrayListClone);
+				System.out.printf("For sorting %d elements using built in ArrayList DataStructure took %d seconds\n",(long) Math.pow(10, i), totalTime/1000000000L);
+				totalTime = 0L;
+			}
+			
+			iArrayList.clear();
+			
+		}
+
+		//
+		// for(int i=2;i<=9;i++){
+		// length = (long)Math.pow(10, i);
+		// while((length=length-1)>=0){
+		// iLinkedList.add(random.nextInt(5000));
+		// }
+		// }
+		//
+		// sort.setList(iLinkedList);
+		// sort.insertionSort();
+
+	}
+
+	private static void clone(ArrayList<Integer> iArrayListClone,
+			ArrayList<Integer> iArrayList) {
+		// TODO Auto-generated method stub
+		
+		iArrayListClone.clear();
+		for(Integer num: iArrayList){
+			iArrayListClone.add(num);
+		}
+		
+	}
+}
