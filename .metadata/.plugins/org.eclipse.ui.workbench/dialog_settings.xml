@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="280" key="DIALOG_X_ORIGIN"/>
-		<item value="14" key="DIALOG_Y_ORIGIN"/>
+		<item value="222" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.preferences.keysPreferencePage">
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="480" key="dialogHeight"/>
-		<item value="853" key="dialogWidth"/>
+		<item value="474" key="dialogHeight"/>
+		<item value="847" key="dialogWidth"/>
 		<list key="textEntries">
 			<item value="1"/>
 			<item value="1"/>
@@ -40,6 +42,8 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/home/hemanth/cs2810Serialisation"/>
+			<item value="/home/hemanth/cs2810FileRead"/>
 			<item value="/media/Hemanth/ACADEMICS/Sem4/Advanced Programming Lab/complex/src"/>
 		</list>
 	</section>

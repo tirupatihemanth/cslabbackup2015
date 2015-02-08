@@ -90,6 +90,7 @@ public class StringReader {
 		//input = "The \"CS2810 lab\" got cancelled due to an India-Pakistan match.";
 		//input = "a\"b c\"d e \"f g h \"d e.";
 		//input = "\"a b c\".";
+		input = "Ram is a very. Good boy.";
 		String[] str = input.split("\"");
 		
 		for(String temp: str){
@@ -109,14 +110,11 @@ public class StringReader {
 			}
 			if(i%2==0){
 				String[] temp = str[i].split(" ");
-				for(int j=temp.length-1;j>=0;j--){
-					if(j==0){
-						output+=temp[0].toLowerCase()+" ";
-					}
-					else {
-						output+=temp[j]+" ";
-					}
+				
+				for(int j=0;j<temp.length;j++){
+					
 				}
+				
 			}
 			else{
 				output+="\""+str[i]+"\" ";
