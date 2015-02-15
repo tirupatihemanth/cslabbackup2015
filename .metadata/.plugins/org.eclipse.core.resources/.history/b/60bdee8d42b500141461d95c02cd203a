@@ -1,0 +1,14 @@
+package lab3_3;
+
+import java.util.Scanner;
+
+public class Driver {
+	
+	Scanner input = new Scanner(System.in);
+	int n = input.nextInt();
+	int m = input.nextInt();
+	
+	Graph graph = new Graph(n, m);
+	
+	
+}

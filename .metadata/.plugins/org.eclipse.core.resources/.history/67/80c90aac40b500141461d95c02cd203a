@@ -1,0 +1,20 @@
+package lab3_3;
+
+import IEdge;
+import Node;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class Graph {
+
+	private ArrayList<LinkedList<Edge>> graph;
+	private Node[] nodes;
+	private int vertices;
+	private int edges;
+	
+	public Graph(int vertices, int edges){
+		this.vertices = vertices;
+		this.edges = edges;
+	}
+}

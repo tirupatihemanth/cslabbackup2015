@@ -1,0 +1,21 @@
+
+public class WeightedEdge extends Edge{
+	
+	private int weight;
+	
+	public WeightedEdge(Node a, Node b, int weight){
+		this.weight = weight;
+		super(a, b);
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+	
+	
+	
+}

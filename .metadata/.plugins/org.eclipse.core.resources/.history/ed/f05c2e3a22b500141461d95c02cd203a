@@ -1,0 +1,23 @@
+
+public class Edge implements IEdge{
+
+	private INode a;
+	private INode b;
+	
+	public Edge(INode a, INode b){
+		
+		this.a = a;
+		this.b = b;
+		
+	}
+	
+	public INode getFirstNode(){
+		return a;
+	}
+	
+	public INode getSecondNode(){
+		return b;
+	}
+	
+	
+}

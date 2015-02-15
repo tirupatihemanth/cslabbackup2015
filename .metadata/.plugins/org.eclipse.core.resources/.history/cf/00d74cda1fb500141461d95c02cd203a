@@ -1,0 +1,8 @@
+
+public class WeightedEdge extends Edge{
+	
+	WeightedEdge(){
+		super(new Node(), new Node());
+	}
+	
+}

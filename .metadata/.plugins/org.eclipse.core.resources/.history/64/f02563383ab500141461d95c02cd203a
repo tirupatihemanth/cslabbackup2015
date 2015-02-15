@@ -1,0 +1,9 @@
+
+public class DijkstrasNode extends Node{
+
+	public DijkstrasNode(int index) {
+		super(index);
+		// TODO Auto-generated constructor stub
+	}
+
+}

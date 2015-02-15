@@ -1,0 +1,8 @@
+
+public class WeightedEdge extends Edge{
+	
+	WeightedEdge(Node a, Node b){
+		this.a = a;
+		this.b = b;
+	}
+}

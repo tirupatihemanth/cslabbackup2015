@@ -1,0 +1,68 @@
+import java.util.ListIterator;
+
+
+//Giving IGraph interface this Graph implements Graph by using adjacency list
+public class Graph implements IGraph{
+
+	
+	@Override
+	public void addEdge(int nodeIdx1, int nodeIdx2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addEdge(Node node1, Node node2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addUndirectedEdge(int nodeIdx1, int nodeIdx2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addUndirectedEdge(Node node1, Node node2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ListIterator<Node> getAdjacentNodes(int nodeIdx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ListIterator<Node> getAdjacentNodes(Node nodeIdx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ListIterator<Edge> getAdjacentEdges(int nodeIdx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ListIterator<Edge> getAdjacentEdges(Node node) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Node getNode(int nodeIdx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int numOfNodes() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

@@ -1,0 +1,7 @@
+
+public interface INode extends Comparable<Integer>{
+
+	public void setIndex(int nodeIdx);
+	public int getIndex();
+	
+}

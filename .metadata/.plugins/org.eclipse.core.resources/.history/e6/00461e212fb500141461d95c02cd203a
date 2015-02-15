@@ -1,0 +1,22 @@
+
+public class Node implements INode{
+
+	private int index;
+	
+	public Node(int index){
+		this.index = index;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+
+	@Override
+	public int compareTo(Integer o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+}
