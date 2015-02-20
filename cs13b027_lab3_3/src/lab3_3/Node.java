@@ -4,8 +4,16 @@ public class Node implements Comparable<Node>{
 
 	private int index;
 	private int minPath;
-
+	private int visitStatus;
 	private int prevNodeIdx;
+	
+	public int getVisitStatus() {
+		return visitStatus;
+	}
+
+	public void setVisitStatus(int visitStatus) {
+		this.visitStatus = visitStatus;
+	}
 	
 	public int getPrevNodeIdx() {
 		return prevNodeIdx;
