@@ -1,7 +1,6 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -13,10 +12,14 @@ public class PrimsDriver {
 	public static void main(String[] args) {
 
 		int cost;
-		Scanner input = null;
+		Scanner input = new Scanner(System.in);
+		String file1 = input.nextLine();
+		String file2 = input.nextLine();
+		
+		//System.out.println(file1);
 		try {
-			input = new Scanner(new FileInputStream(
-					System.getProperty("user.dir") + "/input.txt"));
+			file1 = System.getProperty("user.dir")+"/" + file1;
+			input = new Scanner(new FileInputStream(file1));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -107,10 +110,9 @@ public class PrimsDriver {
 		}
 		
 		//System.out.println(cost*sum);
-		
 		FileOutputStream outputStream = null;
 		try {
-			outputStream = new FileOutputStream(System.getProperty("user.dir")+"/output2.txt");
+			outputStream = new FileOutputStream(file2);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,17 +1,27 @@
 
-
 public class Node implements Comparable<Node>{
 
 	private int index;
 	private int minPath;
 	private int visitStatus;
 	private int prevNodeIdx;
+	private int parent;
+	
 	
 	public Node(int index){
 		this.index = index;
 		this.minPath = Integer.MAX_VALUE;
 		this.visitStatus = 0;
 		this.prevNodeIdx = -1;
+		this.parent = -1;
+	}
+	
+	public int getParent() {
+		return parent;
+	}
+
+	public void setParent(int parent) {
+		this.parent = parent;
 	}
 	
 	public void setVisitStatus(int visitStatus){

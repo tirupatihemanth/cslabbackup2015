@@ -3,9 +3,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Scanner;
 
@@ -16,10 +15,14 @@ public class KruskalsDriver {
 	public static void main(String[] args){
 		
 		
-		Scanner input = null;
+		Scanner input = new Scanner(System.in);
+		String file1 = input.nextLine();
+		String file2 = input.nextLine();
 		try {
-			input = new Scanner(new FileInputStream(
-					System.getProperty("user.dir") + "/input.txt"));
+			file1 = System.getProperty("user.dir")+ "/" + file1;
+			//System.out.println(file1);
+			//System.out.println(System.getProperty("user.dir")+"/" + file1);
+			input = new Scanner(new FileInputStream(file1));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +48,9 @@ public class KruskalsDriver {
 		Node[] nodes = new Node[n];
 		boolean[] nodeStatus = new boolean[n];
 		ArrayList<Edge> edges = new ArrayList<Edge>();
+		ArrayList<LinkedList<Node>> componentList = new ArrayList<LinkedList<Node>>();
 		for(int i=0;i<n;i++){
+			componentList.add(new LinkedList<Node>());
 			nodes[i] = new Node(i);
 			nodeStatus[i] = false;
 		}
@@ -53,20 +58,58 @@ public class KruskalsDriver {
 		for(int i=0;i<m;i++){
 			edges.add(new Edge(nodes[listiterator.next()], nodes[listiterator.next()], listiterator.next()));
 		}
+		
 		edges.sort(null);
 		
 		for(Edge edge: edges){
-			if(!nodeStatus[edge.getFirstNode().getIndex()]){
+			
+			
+			if(edge.getFirstNode().getParent() == -1 && edge.getSecondNode().getParent() == -1){
+				
+				componentList.get(edge.getFirstNode().getIndex()).add(edge.getFirstNode());
+				componentList.get(edge.getFirstNode().getIndex()).add(edge.getSecondNode());
+				edge.getFirstNode().setParent(edge.getFirstNode().getIndex());
+				edge.getSecondNode().setParent(edge.getFirstNode().getIndex());
 				edge.setPresent(1);
-				nodeStatus[edge.getFirstNode().getIndex()] = true;
-				if(!nodeStatus[edge.getSecondNode().getIndex()]){
-					nodeStatus[edge.getSecondNode().getIndex()] = true;
+				
+			}
+			else if(edge.getFirstNode().getParent() == -1 && edge.getSecondNode().getParent()!= -1){
+				componentList.get(edge.getSecondNode().getParent()).add(edge.getFirstNode());
+				edge.getFirstNode().setParent(edge.getSecondNode().getParent());
+				edge.setPresent(1);
+			}
+			else if(edge.getFirstNode().getParent() != -1 && edge.getSecondNode().getParent() == -1){
+				
+				componentList.get(edge.getFirstNode().getParent()).add(edge.getSecondNode());
+				edge.getSecondNode().setParent(edge.getFirstNode().getParent());
+				edge.setPresent(1);
+			}
+			else if(edge.getFirstNode().getParent()!= edge.getSecondNode().getParent()){
+				
+				int idx = edge.getFirstNode().getParent();
+				for(Node node: componentList.get(edge.getSecondNode().getIndex())){
+					node.setParent(idx);
+					componentList.get(edge.getFirstNode().getIndex()).add(node);
 				}
-			}
-			else if(!nodeStatus[edge.getSecondNode().getIndex()]){
+				
+				//componentList.remove(edge.getSecondNode().getIndex());
+				//componentList.get(edge.getSecondNode().getIndex());
 				edge.setPresent(1);
-				nodeStatus[edge.getSecondNode().getIndex()] = true;
+			
 			}
+			
+			
+//			if(!nodeStatus[edge.getFirstNode().getIndex()]){
+//				edge.setPresent(1);
+//				nodeStatus[edge.getFirstNode().getIndex()] = true;
+//				if(!nodeStatus[edge.getSecondNode().getIndex()]){
+//					nodeStatus[edge.getSecondNode().getIndex()] = true;
+//				}
+//			}
+//			else if(!nodeStatus[edge.getSecondNode().getIndex()]){
+//				edge.setPresent(1);
+//				nodeStatus[edge.getSecondNode().getIndex()] = true;
+//			}
 			
 		}
 	
@@ -87,10 +130,11 @@ public class KruskalsDriver {
 		
 		int sum = 0;
 		edges.sort(comp);
-		
 		FileOutputStream outputStream = null;
 		try {
-			outputStream = new FileOutputStream(System.getProperty("user.dir")+"/output1.txt");
+			file2 = System.getProperty("user.dir")+"/" + file2;
+			//System.out.println(file2);
+			outputStream = new FileOutputStream(file2);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
