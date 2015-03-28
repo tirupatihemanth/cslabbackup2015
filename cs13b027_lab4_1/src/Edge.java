@@ -65,4 +65,8 @@ public class Edge implements Comparable<Edge>{
 		
 		return weight - edge.getWeight();
 	}	
+	
+	public String toString(){
+		return this.getFirstNode() + "->" + this.getSecondNode();
+	}
 }

@@ -14,10 +14,11 @@ public class KruskalsDriver {
 
 	public static void main(String[] args){
 		
+		//taking input from the command line arguments
 		
-		Scanner input = new Scanner(System.in);
-		String file1 = input.nextLine();
-		String file2 = input.nextLine();
+		Scanner input = null;
+		String file1 = args[0];
+		String file2 = args[2];
 		try {
 			file1 = System.getProperty("user.dir")+ "/" + file1;
 			//System.out.println(file1);
@@ -30,6 +31,8 @@ public class KruskalsDriver {
 		int cost = input.nextInt();
 		ArrayList<Integer> alist = new ArrayList<Integer>();
 
+		//Determining the no. of edges
+		
 		int n = Integer.MIN_VALUE, temp;
 		while (input.hasNext()) {
 			temp = input.nextInt() - 1;
@@ -46,20 +49,21 @@ public class KruskalsDriver {
 		
 		ListIterator<Integer> listiterator = alist.listIterator();
 		Node[] nodes = new Node[n];
-		boolean[] nodeStatus = new boolean[n];
 		ArrayList<Edge> edges = new ArrayList<Edge>();
 		ArrayList<LinkedList<Node>> componentList = new ArrayList<LinkedList<Node>>();
 		for(int i=0;i<n;i++){
 			componentList.add(new LinkedList<Node>());
 			nodes[i] = new Node(i);
-			nodeStatus[i] = false;
 		}
 		
 		for(int i=0;i<m;i++){
 			edges.add(new Edge(nodes[listiterator.next()], nodes[listiterator.next()], listiterator.next()));
 		}
+		//sorting is done here based on the edges as required by the kruskal's algorithm
 		
 		edges.sort(null);
+
+		//Determining if the edges form a cycle by component method
 		
 		for(Edge edge: edges){
 			
@@ -91,28 +95,14 @@ public class KruskalsDriver {
 					node.setParent(idx);
 					componentList.get(edge.getFirstNode().getIndex()).add(node);
 				}
-				
-				//componentList.remove(edge.getSecondNode().getIndex());
-				//componentList.get(edge.getSecondNode().getIndex());
 				edge.setPresent(1);
 			
 			}
 			
-			
-//			if(!nodeStatus[edge.getFirstNode().getIndex()]){
-//				edge.setPresent(1);
-//				nodeStatus[edge.getFirstNode().getIndex()] = true;
-//				if(!nodeStatus[edge.getSecondNode().getIndex()]){
-//					nodeStatus[edge.getSecondNode().getIndex()] = true;
-//				}
-//			}
-//			else if(!nodeStatus[edge.getSecondNode().getIndex()]){
-//				edge.setPresent(1);
-//				nodeStatus[edge.getSecondNode().getIndex()] = true;
-//			}
-			
 		}
 	
+		//New comparator for sorting of edges so that output is as required
+		
 		Comparator<Edge> comp = new Comparator<Edge>(){
 
 			@Override
@@ -127,6 +117,8 @@ public class KruskalsDriver {
 			}
 		
 		};
+		
+		//wrting to files
 		
 		int sum = 0;
 		edges.sort(comp);
@@ -147,7 +139,7 @@ public class KruskalsDriver {
 				sum+= edge.getWeight();
 			}
 		}
-		
+		// TODO: kajdlkjfkadjfkj
 		writer.println(sum*cost);
 		
 		//System.out.println(cost*sum);
@@ -158,9 +150,15 @@ public class KruskalsDriver {
 			}
 		}
 		
+		// TODO: akldjfkajdfk
+		
 		writer.flush();
 		writer.close();
 		input.close();
+		
+		//Calling prims algorithm using first two arguments
+		PrimsDriver.primsAlgo(args[0], args[1]);
+		
 	}
 	
 

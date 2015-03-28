@@ -19,6 +19,7 @@ public class StringReader {
 	 * @param args
 	 */
 
+	
 	public static void main(String[] args) {
 		// TODO Read the file "input.txt". For each line find a word-unit
 		// reverse and print it.
@@ -90,6 +91,7 @@ public class StringReader {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 	}
 
@@ -191,7 +193,7 @@ public class StringReader {
 		}
 
 		output = output.substring(0, output.length() - 1);
-		output += c;
+		output += ""+c;
 		return output;
 
 	}

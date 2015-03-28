@@ -31,7 +31,7 @@ public class Driver {
 
 		while (true) {
 			temp = pQueue.poll();
-			System.out.println("minElement: " + temp.getMinPath());
+			//System.out.println("minElement: " + temp.getMinPath());
 			if ( temp == null || temp.getMinPath() == Integer.MAX_VALUE ) {
 				break;
 			}
@@ -57,7 +57,7 @@ public class Driver {
 		}
 
 		int destination;
-		while ((destination = input.nextInt()) != 0) {
+	while ((destination = input.nextInt()) != 0) {
 			if (graph.getNode(destination).getMinPath() == Integer.MAX_VALUE) {
 				System.out.println("No route Found");
 			} else {

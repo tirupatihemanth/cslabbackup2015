@@ -1,0 +1,12 @@
+package cs13b027_lab8_2;
+
+public class Node {
+
+	private int data, height;
+	Node left, right;
+	
+	public Node(int data){
+		this.data = data;
+	}
+	
+}

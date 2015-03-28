@@ -3,10 +3,11 @@ import java.util.Scanner;
 
 public class ReliabiltiyCheck {
 
+	static int n, hamiltonianCycle=0;
 	public static void main(String[] args){
 		
 		Scanner input = new Scanner(System.in);
-		int n = input.nextInt();
+		n = input.nextInt();
 		int m = input.nextInt();
 		
 		Graph graph = new Graph(n);
@@ -19,7 +20,11 @@ public class ReliabiltiyCheck {
 		
 		for(int i=0;i<n;i++){
 			if(reliable){
-				reliable = reliabilityCheck(graph, i);
+				reliable = reliabilityCheck(graph, i, 0);
+			}
+			if(hamiltonianCycle == 1){
+				reliable=true;
+				break;
 			}
 		}
 		
@@ -32,7 +37,7 @@ public class ReliabiltiyCheck {
 		
 	}
 	
-	public static boolean reliabilityCheck(Graph graph, int vertex){
+	public static boolean reliabilityCheck(Graph graph, int vertex, int visited){
 	
 		Node node = graph.getNode(vertex);
 		
@@ -41,9 +46,13 @@ public class ReliabiltiyCheck {
 		}
 		else{
 			node.setVisitStatus(1);
-			
+			visited++;
 			for(Node adj: graph.getAdacentNodes(vertex)){
-				if(!reliabilityCheck(graph, adj.getIndex())){
+				if(!reliabilityCheck(graph, adj.getIndex(), visited)){
+					if(visited== n){
+						hamiltonianCycle=1;
+						return true;
+					}
 					return false;
 				}
 			}

@@ -1,0 +1,287 @@
+package cs13b027_lab8_2;
+
+public class AVLTree {
+
+	Node root;
+
+	public AVLTree() {
+
+	}
+
+	/**
+	 * search for a node in the {@link AVLTree} similar to BSTree
+	 * 
+	 * @param data
+	 * @return
+	 */
+	
+	public Node search(int data) {
+
+		Node node = root;
+		while (!node.equals(null)) {
+			if (node.getData() > data) {
+				node = node.left;
+			} else if (node.getData() < data) {
+				node = node.right;
+			} else {
+				break;
+			}
+		}
+
+		return node;
+
+	}
+
+	public void printInorder(){
+		printInorder(root);
+	}
+
+	public void printInorder(Node node){
+		
+		if(node.equals(null)){
+			return;
+		}
+		
+		printInorder(node.getLeft());
+		System.out.println(node.getData());
+		printInorder(node.getRight());
+		
+	}
+	
+	public void insert(int data) {
+		insertNode(new Node(data));
+	}
+	
+	public void insertNode(Node node) {
+
+		if (root.equals(null)) {
+			root = node;
+			return;
+		}
+
+		Node temp, temp1;
+		temp = temp1 = root;
+
+		while (temp != null) {
+			temp1 = temp;
+			if (temp.getData() > node.getData()) {
+				temp = temp.getLeft();
+			} else {
+				temp = temp.getRight();
+			}
+		}
+
+		if (temp1.getData() > node.getData()) {
+			temp1.left = node;
+			node.parent = temp1;
+		} else {
+			temp1.right = node;
+			node.parent = temp1;
+		}
+
+		CorrectAVLTree(temp1);
+
+	}
+	
+	public void delete(int data) {
+		Node node = search(data);
+		Node removeNode;
+		
+		if(!(node.left.equals(null) || node.right.equals(null))){
+			removeNode = node.left;
+			
+			while(!removeNode.right.equals(null)){
+				removeNode = removeNode.right;
+			}
+			swapValues(node,removeNode);
+		}
+		
+		if(!node.left.equals(null)){
+			if(node.parent.left.equals(node)){
+				node.parent.left = node.left;
+				node.left.parent = node.parent; 
+			}
+			else{
+				node.parent.right = node.left;
+				node.left.parent = node.parent;
+			}
+		}
+		else if(!node.right.equals(null)){
+			if(node.parent.left.equals(node)){
+				node.parent.left = node.right;
+				node.right.parent = node.parent;
+			}
+			else{
+				node.parent.right = node.right;
+				node.right.parent = node.parent;
+			}
+		}
+		else{
+			if(node.parent.left.equals(null)){
+				node.parent.left = null;
+			}
+			else{
+				node.parent.right = null;
+			}
+		}
+		
+		CorrectAVLTree(node.parent);
+
+	}
+	
+	
+	/**
+	 * 
+	 * <p>
+	 * Used by the insert method to correct all the height values which gets
+	 * changed after insertion and does appropriate rotations to make it
+	 * balanced
+	 * </p>
+	 * 
+	 * @param node
+	 *            <p>
+	 *            Here node is nothing but the ancestor to the node which is
+	 *            inserted
+	 *            </p>
+	 * 
+	 */
+
+	private void CorrectAVLTree(Node node) {
+
+		int branchFactor;
+		while (!node.parent.equals(null)) {
+			node.setHeight(getHeight(node));
+			branchFactor = getBranchFactor(node);
+
+			if (branchFactor == 2) {
+				if(getBranchFactor(node.left) == -1){
+					rightRotate(node.left);
+				}
+				leftRotate(node.left);
+				
+			} else if (branchFactor == -2) {
+				if(getBranchFactor(node.right) == 1){
+					rightRotate(node.right);
+				}
+				leftRotate(node.right);
+			}
+		}
+
+	}
+	
+	private int max(int n1, int n2) {
+
+		return n1 > n2 ? n1 : n2;
+
+	}
+	
+	/*
+	 * updates the height of a node
+	 */
+
+	private int getHeight(Node node) {
+
+		if (node.equals(null)) {
+			return 0;
+		}
+
+		if (!(node.left.equals(null) || node.right.equals(null))) {
+			return max(node.left.getHeight(), node.right.getHeight()) + 1;
+		} else {
+			if (!node.left.equals(null)) {
+				return node.left.getHeight() + 1;
+			} else if (!node.right.equals(null)) {
+				return node.right.getHeight() + 1;
+			}
+		}
+
+		return 0;
+
+	}
+
+	private int getBranchFactor(Node node) {
+		
+		if(!(node.left.equals(null) || node.right.equals(null))){
+			return node.left.getHeight() - node.right.getHeight();
+		}
+		else{
+			if(!node.left.equals(null)){
+				return node.left.getHeight();
+			}
+			else if(!node.right.equals(null)){
+				return node.right.getHeight();
+			}
+		}
+		
+		return 0;
+	}
+	
+	
+
+	private void leftRotate(Node node) {
+
+		node.setHeight(node.getHeight()-1);
+		Node temp = node.right;
+		temp.setHeight(temp.getHeight()+1);
+		temp.left.parent = node;
+		node.right = node.right.left;
+		temp.left = node;
+		temp.parent = node.parent;
+		if (node.parent.left.equals(node)) {
+			node.parent.left = temp;
+		} else {
+			node.parent.right = temp;
+		}
+		node.parent = temp;
+
+	}
+
+	private void rightRotate(Node node) {
+
+		node.setHeight(node.getHeight()-1);
+		Node temp = node.left;
+		temp.setHeight(temp.getHeight()+1);
+		temp.right.parent = node;
+		node.left = node.left.right;
+		temp.right = node;
+		temp.parent = node.parent;
+		if (node.parent.left.equals(node)) {
+			node.parent.left = temp;
+		} else {
+			node.parent.right = temp;
+		}
+		node.parent = temp;
+	}
+	
+	/**
+	 * <p>Swaps all fields in node1 object and node2 object</p>
+	 * @param node1
+	 * @param node2
+	 */
+	private void swapValues(Node node1, Node node2){
+		
+		node1.setData(node1.getData() ^ node2.getData());
+		node2.setData(node1.getData() ^ node2.getData());
+		node1.setData(node1.getData() ^ node2.getData());
+		
+		node1.setHeight(node1.getHeight() ^ node2.getHeight());
+		node2.setHeight(node1.getHeight() ^ node2.getHeight());
+		node1.setHeight(node1.getHeight() ^ node2.getHeight());
+		
+		Node temp;
+		temp = node1.getLeft();
+		node1.setLeft(node2.getLeft());
+		node2.setLeft(temp);
+		
+		temp = node1.getRight();
+		node1.setRight(node2.getRight());
+		node2.setRight(node1.getRight());
+		
+		temp = node1.getParent();
+		node1.setParent(node2.getParent());
+		node2.setParent(temp);
+		
+	}
+	
+
+}

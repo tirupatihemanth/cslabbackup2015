@@ -61,4 +61,7 @@ public class Node implements Comparable<Node>{
 		return minPath - node.getMinPath();
 	}
 	
+	public String toString(){
+		return  String.valueOf(this.index);
+	}
 }

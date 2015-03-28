@@ -9,14 +9,19 @@ import java.util.Scanner;
 
 public class PrimsDriver {
 
-	public static void main(String[] args) {
+	/**
+	 * This function performs the prim's algorithm for the given graph. 
+	 * It does not work for some cases. 
+	 * @param file1
+	 * @param file2
+	 */
+	public static void primsAlgo(String file1, String file2) {
 
 		int cost;
-		Scanner input = new Scanner(System.in);
-		String file1 = input.nextLine();
-		String file2 = input.nextLine();
+		Scanner input = null;
 		
-		//System.out.println(file1);
+		//taking input from the command line
+		
 		try {
 			file1 = System.getProperty("user.dir")+"/" + file1;
 			input = new Scanner(new FileInputStream(file1));
@@ -27,6 +32,8 @@ public class PrimsDriver {
 		cost = input.nextInt();
 		ArrayList<Integer> alist = new ArrayList<Integer>();
 
+		//determining number of nodes
+		
 		int n = Integer.MIN_VALUE, temp;
 		while (input.hasNext()) {
 			temp = input.nextInt() - 1;
@@ -48,6 +55,8 @@ public class PrimsDriver {
 					listiterator.next(), listiterator.next());
 		}
 
+		//Adding nodes to the priority queue to get the minimum weight from the visited set to the unvisited set
+		
 		PriorityQueue<Node> pQueue = new PriorityQueue<Node>();
 
 		for (int i = 0; i < n; i++) {
@@ -58,6 +67,8 @@ public class PrimsDriver {
 		Node minNode;
 		int minPath;
 
+		//Algorithm to add edges to the visited set and build up the spanning tree
+		
 		while (true) {
 			minNode = pQueue.poll();
 			if (minNode == null || minNode.getMinPath() == Integer.MAX_VALUE) {
@@ -90,8 +101,6 @@ public class PrimsDriver {
 								minNode.getIndex());
 		
 						pQueue.add(adjEdge.getSecondNode());
-						// ListIterator<Edge> iterator =
-						// graph.getAdjacentEdges(adjEdge.getSecondNode().getPrevNodeIdx()).listIterator();
 
 					}
 				}
@@ -108,6 +117,8 @@ public class PrimsDriver {
 				}
 			}
 		}
+		
+		//Writing the output to the output files
 		
 		//System.out.println(cost*sum);
 		FileOutputStream outputStream = null;

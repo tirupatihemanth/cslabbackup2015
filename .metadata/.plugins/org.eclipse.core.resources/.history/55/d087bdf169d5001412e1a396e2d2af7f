@@ -1,0 +1,54 @@
+package cs13b027_lab8_1;
+public class Edge{
+
+	
+	private Node a;
+	private Node b;
+	private int Maxflow;
+	
+	public Edge(Node a, Node b, int wt){
+		
+		this.a = a;
+		this.b = b;
+		this.weight = wt;
+	}
+	
+	
+	public Node getA() {
+		return a;
+	}
+
+	public void setA(Node a) {
+		this.a = a;
+	}
+
+	public Node getB() {
+		return b;
+	}
+
+	public void setB(Node b) {
+		this.b = b;
+	}
+
+	public Node getFirstNode(){
+		return a;
+	}
+	
+	public Node getSecondNode(){
+		return b;
+	}
+	
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	
+	}
+
+	
+	public String toString(){
+		return this.getFirstNode() + "->" + this.getSecondNode();
+	}
+}

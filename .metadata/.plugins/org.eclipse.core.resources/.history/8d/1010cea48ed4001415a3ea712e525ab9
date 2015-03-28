@@ -1,0 +1,22 @@
+package cs13b027_lab8_2;
+
+import java.util.Scanner;
+
+public class Driver {
+
+	public static void main(String[] args){
+		
+		Scanner input = new Scanner(System.in);
+		AVLTree avlTree = new AVLTree();
+		int temp;
+		while((temp = input.nextInt())!=-1){
+			if(avlTree.search(temp).equals(null)){
+				avlTree.insert(temp);
+			}
+			else{
+				avlTree.delete(temp);
+			}
+		}
+	}
+	
+}

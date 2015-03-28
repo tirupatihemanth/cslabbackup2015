@@ -194,7 +194,7 @@ public class MainClass {
 		 * Linked list sorting using insertion Sort
 		 */
 
-		for (int i = 2; i <= 4; i++) {
+		for (int i = 2; i <= 3; i++) {
 			temp = (long) Math.pow(10, i);
 
 			for (int j = 1; j <= 15; j++) {

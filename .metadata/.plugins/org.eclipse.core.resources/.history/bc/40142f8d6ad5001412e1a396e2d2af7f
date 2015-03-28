@@ -1,0 +1,41 @@
+package cs13b027_lab8_1;
+public class Edge{
+
+	
+	private Node a;
+	private Node b;
+	private int maxflow;
+	
+
+	public Edge(Node a, Node b, int maxflow){
+		
+		this.a = a;
+		this.b = b;
+		this.maxflow = maxflow;
+		
+	}
+	
+	
+	public int getMaxflow() {
+		return maxflow;
+	}
+
+
+	public void setMaxflow(int maxflow) {
+		this.maxflow = maxflow;
+	}
+
+
+	public Node getFirstNode(){
+		return a;
+	}
+	
+	public Node getSecondNode(){
+		return b;
+	}
+	
+	public String toString(){
+		return this.getFirstNode() + "->" + this.getSecondNode();
+	}
+	
+}

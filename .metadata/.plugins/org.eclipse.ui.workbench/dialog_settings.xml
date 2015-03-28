@@ -1,56 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="197" key="DIALOG_X_ORIGIN"/>
-		<item value="0" key="DIALOG_Y_ORIGIN"/>
-	</section>
-	<section name="org.eclipse.ui.preferences.keysPreferencePage">
+	<section name="FileSystemImportWizard">
+		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
+		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
+		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="D:\ACADEMICS\Sem4\apl\cs13b027_lab4_1\src"/>
+			<item value="D:\ACADEMICS\Sem4\cs13b027_lab6_1\src\cs13b027_lab6_1"/>
+			<item value="D:\ACADEMICS\Sem4\cs13b027_lab6_1\src"/>
+			<item value="/media/Hemanth/ACADEMICS/Sem4/apl/temp"/>
+			<item value="/home/hemanth/temp"/>
+		</list>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="474" key="dialogHeight"/>
-		<item value="847" key="dialogWidth"/>
-		<list key="textEntries">
-			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
-		</list>
-		<list key="orderedElements">
-			<item value="org.eclipse.wst.jsdt.ui.preferences.BuildPathPreferencePage"/>
-			<item value="org.eclipse.ui.resourcePerspective"/>
-			<item value="org.eclipse.ui.navigate.showIn(org.eclipse.ui.navigate.showIn.targetId=org.eclipse.ui.views.ResourceNavigator)"/>
-		</list>
+		<item value="1025" key="dialogWidth"/>
+		<item value="537" key="dialogHeight"/>
 		<list key="orderedProviders">
+			<item value="org.eclipse.ui.actions"/>
+			<item value="org.eclipse.ui.commands"/>
+			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.preferences"/>
+			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.perspectives"/>
 			<item value="org.eclipse.ui.commands"/>
 		</list>
 		<list key="textArray">
-			<item value="include"/>
+			<item value="getter"/>
+			<item value="collapse"/>
+			<item value="show p"/>
+			<item value="font"/>
+			<item value="prefere"/>
 			<item value="resource"/>
 			<item value="naviga"/>
 		</list>
+		<list key="orderedElements">
+			<item value="org.eclipse.jdt.ui.actions.GenerateGetterSetter"/>
+			<item value="org.eclipse.ui.edit.text.folding.collapse_all"/>
+			<item value="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.eclipse.jdt.ui.JavaBrowsingPerspective)"/>
+			<item value="org.eclipse.ui.preferencePages.ColorsAndFonts"/>
+			<item value="org.eclipse.ui.window.preferences"/>
+			<item value="org.eclipse.ui.resourcePerspective"/>
+			<item value="org.eclipse.ui.navigate.showIn(org.eclipse.ui.navigate.showIn.targetId=org.eclipse.ui.views.ResourceNavigator)"/>
+		</list>
+		<list key="textEntries">
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+		</list>
+	</section>
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="32" key="DIALOG_Y_ORIGIN"/>
+		<item value="289" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.jdt.ui.wizards.JavaProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.ui.editors.wizards.UntitledTextFileWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.ui.Basic"/>
 		</list>
+	</section>
+	<section name="org.eclipse.ui.preferences.keysPreferencePage">
+		<item value="true" key="uncategorizedFilter"/>
+		<item value="true" key="internalFilter"/>
+		<item value="true" key="actionSetFilter"/>
 	</section>
 	<section name="ImportExportAction">
 		<item value="org.eclipse.ui.wizards.import.FileSystem" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
-		</list>
-	</section>
-	<section name="FileSystemImportWizard">
-		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
-		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
-		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
-			<item value="/media/Hemanth/ACADEMICS/Sem4/apl/temp"/>
-			<item value="/home/hemanth/temp"/>
-			<item value="/media/Hemanth/ACADEMICS/Sem4/apl/lab3_3/src"/>
-			<item value="/media/Hemanth/ACADEMICS/Sem4/apl/BipartiteTest/src"/>
-			<item value="/home/hemanth/Downloads/cs13b027_lab3_1"/>
 		</list>
 	</section>
 </section>

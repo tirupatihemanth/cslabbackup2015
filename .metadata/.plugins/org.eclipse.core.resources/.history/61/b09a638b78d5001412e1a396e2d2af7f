@@ -1,0 +1,41 @@
+package cs13b027_lab8_1;
+public class Edge{
+
+	
+	private Node a;
+	private Node b;
+	private int capacity;
+	
+
+	public Edge(Node a, Node b, int capacity){
+		
+		this.a = a;
+		this.b = b;
+		this.capacity = capacity;
+		
+	}
+	
+	
+	public int getcapacity() {
+		return capacity;
+	}
+
+
+	public void setcapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+
+	public Node getFirstNode(){
+		return a;
+	}
+	
+	public Node getSecondNode(){
+		return b;
+	}
+	
+	public String toString(){
+		return this.getFirstNode() + "->" + this.getSecondNode();
+	}
+	
+}
