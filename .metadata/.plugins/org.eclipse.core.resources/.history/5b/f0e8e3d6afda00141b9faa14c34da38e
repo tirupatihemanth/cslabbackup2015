@@ -1,0 +1,14 @@
+
+public class BackendTTT {
+	
+	public final int size;
+	public boolean boardStatus[][];
+	
+	public BackendTTT(int size) {
+		// TODO Auto-generated constructor stub
+		this.size = size;
+	}
+	
+	
+	
+}

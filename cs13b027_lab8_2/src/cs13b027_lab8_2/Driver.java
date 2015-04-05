@@ -8,19 +8,37 @@ public class Driver {
 		
 		Scanner input = new Scanner(System.in);
 		AVLTree avlTree = new AVLTree();
+		BSTree bsTree = new BSTree();
 		int temp;
-		
+		System.out.println("The heights are displayed taking the base from height 1");
 		while((temp = input.nextInt())!=-1){
+			
 			if(avlTree.search(temp) == null){
 				avlTree.insert(temp);
 			}
 			else{
 				avlTree.delete(temp);
 			}
+			if(bsTree.search(temp) == null){
+				bsTree.add(temp);
+			}
+			else{
+				bsTree.remove(temp);
+			}
 			
-			avlTree.printInorder();
+			System.out.printf("Avl Tree: ");
+			avlTree.print_breadthfirst();
+			System.out.printf("BSTree: ");
+			bsTree.print_breadthfirst();
+			System.out.printf("AvlTreeHeight: %d ",avlTree.root.getHeight());
+			System.out.println("BSTreeHeight: " + bsTree.getHeight());
 		}
 		
+	
+		System.out.printf("AvlTree Inorder: ");
+		avlTree.printInorder();
+		System.out.printf("BSTree Inorder: ");
+		bsTree.print_inorder();
 	}
 	
 }

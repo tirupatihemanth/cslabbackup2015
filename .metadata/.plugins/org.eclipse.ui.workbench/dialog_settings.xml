@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<section name="FileSystemImportWizard">
-		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
-		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
-		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
-			<item value="D:\ACADEMICS\Sem4\apl\cs13b027_lab4_1\src"/>
-			<item value="D:\ACADEMICS\Sem4\cs13b027_lab6_1\src\cs13b027_lab6_1"/>
-			<item value="D:\ACADEMICS\Sem4\cs13b027_lab6_1\src"/>
-			<item value="/media/Hemanth/ACADEMICS/Sem4/apl/temp"/>
-			<item value="/home/hemanth/temp"/>
-		</list>
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="31" key="DIALOG_Y_ORIGIN"/>
+		<item value="149" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.preferences.keysPreferencePage">
+		<item value="true" key="actionSetFilter"/>
+		<item value="true" key="uncategorizedFilter"/>
+		<item value="true" key="internalFilter"/>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="1025" key="dialogWidth"/>
-		<item value="537" key="dialogHeight"/>
+		<item value="480" key="dialogHeight"/>
+		<item value="853" key="dialogWidth"/>
+		<list key="textEntries">
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+			<item value="1"/>
+		</list>
+		<list key="orderedElements">
+			<item value="sed.tabletree.collapseAll"/>
+			<item value="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.eclipse.jdt.ui.JavaBrowsingPerspective)"/>
+			<item value="org.eclipse.ui.preferencePages.ColorsAndFonts"/>
+			<item value="org.eclipse.ui.window.preferences"/>
+			<item value="org.eclipse.ui.resourcePerspective"/>
+			<item value="org.eclipse.ui.navigate.showIn(org.eclipse.ui.navigate.showIn.targetId=org.eclipse.ui.views.ResourceNavigator)"/>
+		</list>
 		<list key="orderedProviders">
-			<item value="org.eclipse.ui.actions"/>
 			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.commands"/>
 			<item value="org.eclipse.ui.preferences"/>
@@ -24,52 +37,36 @@
 			<item value="org.eclipse.ui.commands"/>
 		</list>
 		<list key="textArray">
-			<item value="getter"/>
-			<item value="collapse"/>
+			<item value="colla"/>
 			<item value="show p"/>
 			<item value="font"/>
 			<item value="prefere"/>
 			<item value="resource"/>
 			<item value="naviga"/>
 		</list>
-		<list key="orderedElements">
-			<item value="org.eclipse.jdt.ui.actions.GenerateGetterSetter"/>
-			<item value="org.eclipse.ui.edit.text.folding.collapse_all"/>
-			<item value="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.eclipse.jdt.ui.JavaBrowsingPerspective)"/>
-			<item value="org.eclipse.ui.preferencePages.ColorsAndFonts"/>
-			<item value="org.eclipse.ui.window.preferences"/>
-			<item value="org.eclipse.ui.resourcePerspective"/>
-			<item value="org.eclipse.ui.navigate.showIn(org.eclipse.ui.navigate.showIn.targetId=org.eclipse.ui.views.ResourceNavigator)"/>
-		</list>
-		<list key="textEntries">
-			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
-			<item value="1"/>
-		</list>
-	</section>
-	<section name="WorkbenchPreferenceDialogSettings">
-		<item value="32" key="DIALOG_Y_ORIGIN"/>
-		<item value="289" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.ui.editors.wizards.UntitledTextFileWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.wb.swing.ApplicationWindow" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.wb"/>
+			<item value="org.eclipse.wb/org.eclipse.wb.swing"/>
+		</list>
+	</section>
+	<section name="ImportExportAction">
+		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
 	</section>
-	<section name="org.eclipse.ui.preferences.keysPreferencePage">
-		<item value="true" key="uncategorizedFilter"/>
-		<item value="true" key="internalFilter"/>
-		<item value="true" key="actionSetFilter"/>
-	</section>
-	<section name="ImportExportAction">
-		<item value="org.eclipse.ui.wizards.import.FileSystem" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
-		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
-			<item value="org.eclipse.ui.Basic"/>
+	<section name="FileSystemImportWizard">
+		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
+		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
+		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="D:\ACADEMICS\Sem4\apl\cs13b027_lab0_1\src"/>
+			<item value="D:\ACADEMICS\Sem4\apl\cs13b027_lab4_1\src"/>
+			<item value="D:\ACADEMICS\Sem4\cs13b027_lab6_1\src\cs13b027_lab6_1"/>
+			<item value="D:\ACADEMICS\Sem4\cs13b027_lab6_1\src"/>
+			<item value="/media/Hemanth/ACADEMICS/Sem4/apl/temp"/>
 		</list>
 	</section>
 </section>

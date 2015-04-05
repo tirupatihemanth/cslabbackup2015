@@ -2,7 +2,7 @@
 public class Wordament {
 
 	Board board;
-
+	
 	// Constructor for initialisng a new Wordament game
 	public Wordament() {
 		board = new Board();

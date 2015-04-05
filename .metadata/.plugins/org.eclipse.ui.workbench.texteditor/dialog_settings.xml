@@ -2,9 +2,9 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="8" key="DIALOG_Y_ORIGIN"/>
+		<item value="15" key="DIALOG_Y_ORIGIN"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
-		<item value="901" key="DIALOG_X_ORIGIN"/>
+		<item value="905" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
@@ -13,21 +13,26 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="capacity" key="selection"/>
+		<item value="setVisi" key="selection"/>
 		<list key="findhistory">
-			<item value="maxFlow"/>
-			<item value=".equals(null)"/>
-			<item value="minElement"/>
-			<item value="blah"/>
-			<item value="system"/>
-			<item value="getFa"/>
-			<item value="getF"/>
-			<item value="setFa"/>
+			<item value="setVisi"/>
+			<item value="drawNumber"/>
+			<item value="draw"/>
+			<item value="next_move"/>
+			<item value="next"/>
+			<item value="drawChes"/>
+			<item value="label"/>
+			<item value="Node"/>
 		</list>
 		<list key="replacehistory">
+			<item value="BSNode"/>
+			<item value="printInorder"/>
+			<item value="printI"/>
+			<item value="delete"/>
+			<item value=""/>
+			<item value="AVLTree"/>
 			<item value="capacity"/>
 			<item value=" == null"/>
-			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

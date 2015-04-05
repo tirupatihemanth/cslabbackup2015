@@ -1,11 +1,13 @@
 package cs13b027_lab2_1;
-
+/**
+ * 
+ */
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 /*
- * warning send with argument as list each time to sort more lists using a single object of sort
+ * warning!!! send with argument as list each time to sort more lists using a single object of sort
  *
  *
  */

@@ -1,0 +1,28 @@
+import javax.swing.SwingUtilities;
+
+/**
+ * Driver class which instantiates appropriate classes and initiates the program
+ * @author HemanthKumarTirupati
+ *
+ */
+public class Tictactoe {
+
+
+	/**
+	 * Main method
+	 * @param args
+	 */
+	public static void main(String[] args){
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				GameLauncher gameLauncher = new GameLauncher();
+			}
+		});
+		
+		
+	}
+}

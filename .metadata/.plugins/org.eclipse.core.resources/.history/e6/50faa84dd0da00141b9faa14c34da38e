@@ -1,0 +1,19 @@
+package iitm.apl.KnightsTour;
+
+import java.util.List;
+
+public class MyTour extends ChessBoard{
+
+	@Override
+	List<Move> tour(Move m) {
+		// TODO Auto-generated method stub
+		
+		return null;
+	}
+
+	public static void main(String[] args){
+		initialise(new MyTour());
+		
+	}
+	
+}

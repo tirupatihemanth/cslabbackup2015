@@ -1,0 +1,51 @@
+package iitm.apl.KnightsTour;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+public class MyTour extends ChessBoard{
+
+	List<Move> movesList;
+	Stack<Move> movesStack;
+	@Override
+	List<Move> tour(Move m) {
+		// TODO Auto-generated method stub
+		movesList = new ArrayList<Move>();
+		movesStack = new Stack<Move>();
+		for(Move move: movesStack){
+			movesList.add(move);
+		}
+		backTrackMoves(m);
+		return movesList;
+	}
+	
+	private boolean backTrackMoves(Move m){
+		
+		if(movesList.size() == getBoardSize()*getBoardSize()){
+			return true;
+		}
+		
+		for(Move move: m.reachableMoves()){
+			if(isNextMoveValid(move)){
+				movesStack.push(move);
+				makeMove(move);
+				if(backTrackMoves(move)){
+					return true;
+				}
+				else{
+					movesStack.pop();
+					undoMove();
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+	public static void main(String[] args){
+		initialise(new MyTour());
+		
+	}
+	
+}

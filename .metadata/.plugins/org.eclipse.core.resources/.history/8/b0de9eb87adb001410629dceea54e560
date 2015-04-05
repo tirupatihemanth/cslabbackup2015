@@ -1,0 +1,298 @@
+import java.awt.BorderLayout;
+import java.awt.Choice;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class FrontendTTT {
+
+	BackendTTT board;
+	JFrame mainFrame;
+	JPanel gameGrid;
+	JButton gridButtons[][];
+	JLabel statusLabel;
+	String statusString = "Start The Game";
+	boolean gameEnd = false;
+	public FrontendTTT(int size) {
+		// TODO Auto-generated constructor stub
+		this.board = new BackendTTT(size);
+		makeGUI();
+	}
+
+	/**
+	 * @wbp.parser.entryPoint
+	 */
+	public void makeGUI() {
+		
+		mainFrame = new JFrame("Tic - Tac - Toe");
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//mainFrame.setMinimumSize(new Dimension(300, 300));
+		JTextField gridSize = new JTextField("3");
+		
+		Container mainPane = mainFrame.getContentPane();
+
+		JMenuBar menuBar = new JMenuBar();
+		JMenu mainMenu = new JMenu("File");
+		JMenuItem newGameItem = mainMenu.add("New Game");
+		JMenuItem quitGame = mainMenu.add("Quit");
+		newGameItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				newGame();
+			}
+		});
+		quitGame.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.dispose();
+			}
+		});
+		menuBar.add(mainMenu);
+		mainPane.add(menuBar, BorderLayout.PAGE_START);
+
+		statusLabel = new JLabel(statusString);
+		mainPane.add(statusLabel, BorderLayout.PAGE_END);
+
+		gameGrid = new JPanel(new GridLayout(board.size, board.size, 10, 10));
+		
+		gridButtons = new JButton[board.size][board.size];
+
+		class MyListener implements ActionListener {
+
+			short i, j;
+
+			public MyListener(short i, short j) {
+				// TODO Auto-generated constructor stub
+				this.i = i;
+				this.j = j;
+			}
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (board.boardStatus[i][j] == 0 && !gameEnd) {
+
+					if (board.player1) {
+						board.boardStatus[i][j] = 1;
+						updateGridItem(gridButtons[i][j], 1);
+						board.player1 = false;
+						board.player2 = true;
+						board.player1Moves++;
+					} else {
+						board.boardStatus[i][j] = -1;
+						updateGridItem(gridButtons[i][j], -1);
+						board.player1 = true;
+						board.player2 = false;
+						board.player2Moves++;
+					}
+					
+					statusString = "p1Moves: "+board.player1Moves+"  p2Movies: "+board.player2Moves;
+					short temp;
+					if((temp = getGameStatus())!=0){
+						if(temp == 1){
+							gameEnd = true;
+							statusString+= " Player1 wins!!!";
+						}
+						else if(temp == -1){
+							gameEnd = true;
+							statusString+= " Player2 wins!!!";
+						}
+						else if(temp == 2){
+							gameEnd = false;
+							statusString+= " Draw!!!";
+						}
+					}
+					statusLabel.setText(statusString);
+				}
+
+			}
+
+			private short getGameStatus() {  
+				// TODO Auto-generated method stub
+				short temp;
+				boolean draw = true;
+				//checking in principle diagonal
+				temp = 0;
+				for(int i=0;i<board.size;i++){
+					if(board.boardStatus[i][i] == 0){
+						draw = false;
+						break;
+					}
+					else{
+						if(temp == 0){
+							temp = board.boardStatus[i][i];
+						}
+						else if(temp!=board.boardStatus[i][i]){
+							break;
+						}
+						else if(i == board.size-1){
+							return temp;
+						}
+					}
+				}
+				
+				//checking in other main diagonal
+				int j=0;
+				temp = 0;
+				for(int i = board.size-1;i>=0;i--){
+					if(board.boardStatus[i][j] == 0){
+						draw = false;
+						break;
+					}
+					else{
+						if(temp == 0){
+							temp = board.boardStatus[i][j];
+						}
+						else if(temp!=board.boardStatus[i][j]){
+							break;
+						}
+						else if(i == 0){
+							return temp;
+						}
+					}
+					j++;
+				}
+				
+				//checking for the presence of n x's or o's in the horizontal rows
+				for(int i=0;i<board.size;i++){
+					temp = 0;
+					for(j=0;j<board.size;j++){
+						if(board.boardStatus[i][j] == 0){
+							draw = false;
+							break;
+						}
+						else{
+							if(temp == 0){
+								temp = board.boardStatus[i][j];
+							}
+							else if(temp != board.boardStatus[i][j]){
+								break;
+							}
+							else if(j == board.size-1){
+								return temp;
+							}
+						}
+					}
+				}
+				
+				//checking for the presence of o's in vertical rows
+				for(int i=0;i<board.size;i++){
+					temp = 0;
+					for(j=0;j<board.size;j++){
+						if(board.boardStatus[j][i] == 0){
+							draw = false;
+							break;
+						}
+						else{
+							if(temp == 0){
+								temp = board.boardStatus[j][i];
+							}
+							else if(temp != board.boardStatus[j][i]){
+								break;
+							}
+							else if(j == board.size-1){
+								return temp;
+							}
+						}
+					}
+				}
+				
+				if(draw){
+					return 2;
+				}
+				return 0;
+			}
+			
+			
+
+		}
+		
+		for (int i = 0; i < board.size; i++) {
+			for (int j = 0; j < board.size; j++) {
+				gridButtons[i][j] = new JButton();
+				gridButtons[i][j].addActionListener(new MyListener((short) i,
+						(short) j));
+				updateGridItem(gridButtons[i][j], 0);
+				gameGrid.add(gridButtons[i][j]);
+			}
+		}
+
+		mainPane.add(gameGrid, BorderLayout.CENTER);
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+
+	}
+
+	private void newGame() {
+		// TODO Auto-generated method stub
+		gameEnd = false;
+		for (int i = 0; i < board.size; i++) {
+			for (int j = 0; j < board.size; j++) {
+				board.boardStatus[i][j] = 0;
+				updateGridItem(gridButtons[i][j], board.boardStatus[i][j]);
+			}
+		}
+
+		mainFrame.pack();
+
+	}
+
+	private void updateGridItem(JButton jButton, int status) {
+
+		Image img = null;
+		switch (status) {
+		case 0:
+			try {
+				img = ImageIO.read(new File(System.getProperty("user.dir")
+						+ "/imgs/empty.png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case 1:
+			try {
+				img = ImageIO.read(new File(System.getProperty("user.dir")
+						+ "/imgs/xicon.png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		case -1:
+			try {
+				img = ImageIO.read(new File(System.getProperty("user.dir")
+						+ "/imgs/oicon.png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
+		}
+
+		jButton.setIcon(new ImageIcon(img));
+
+	}
+
+}

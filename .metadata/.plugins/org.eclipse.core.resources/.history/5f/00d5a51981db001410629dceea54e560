@@ -1,0 +1,79 @@
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+public class GameLauncher extends JFrame{
+
+	public GameLauncher(){
+
+		setTitle("Tic - Tac - Toe Launcher");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		JPanel launcherPanel = new JPanel();
+
+		
+		JLabel sizeLabel = new JLabel("Grid Size");
+		sizeLabel.setBounds(20, 80, 20, 20);
+		
+		
+		final JLabel statusLabel = new JLabel("Let's start the Game");
+		Container contentPane = getContentPane();
+		contentPane.add(statusLabel, BorderLayout.PAGE_END);
+		
+	
+		
+		JButton playButton = new JButton("Play");
+		playButton.setBounds(40, 40, 20,40);
+		launcherPanel.add(playButton);
+		launcherPanel.add(sizeLabel);
+		
+		final JTextField gridSize = new JTextField("3");
+		gridSize.setBounds(60, 80, 30, 30);
+		launcherPanel.add(gridSize);
+		
+		playButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int size = Integer.parseInt(gridSize.getText());
+				
+				if(size>=3 && size<=15){
+					dispose();
+					FrontendTTT guiObject = new FrontendTTT(size);
+				}
+				else{
+					statusLabel.setText("gridSize must be between 3 and 15");
+				}
+				
+			}
+		});
+		
+		
+		JButton quitButton = new JButton("Quit");
+		quitButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+			}
+		});
+		quitButton.setBounds(40, 170, 30, 30);
+		launcherPanel.add(quitButton);
+		
+		contentPane.add(launcherPanel);
+		pack();
+		setSize(200,200);
+		setVisible(true);
+	}
+}

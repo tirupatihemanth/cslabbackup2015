@@ -1,0 +1,41 @@
+import java.io.InputStreamReader;
+import java.util.Properties;
+
+import javax.mail.Address;
+import javax.mail.BodyPart;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Store;
+
+
+public class ReadMail {
+	public static void main(String[] args){
+		Properties properties = new Properties();
+		properties.setProperty("mail.store.protocol", "imaps");
+		try{
+			Session userSession = Session.getInstance(properties, null);
+			Store messageDB = userSession.getStore();
+			messageDB.connect("imap.mail.yahoo.com", "tirupatihemanthkumar@yahoo.in", "0808122582");
+			Folder inboxFolder = messageDB.getFolder("INBOX");
+			inboxFolder.open(Folder.READ_ONLY);
+			//Message mails = inboxFolder.getMessage(inboxFolder.getMessageCount());
+			Message[] mails = inboxFolder.getMessages();
+			Address[] fromAddress = mails[0].getFrom();
+			Multipart totalContent = (Multipart) mails[0].getContent();
+			BodyPart body = totalContent.getBodyPart(0);
+			System.out.println(inboxFolder.getMessageCount());
+			System.out.println("FROM: " + fromAddress[0]);
+			System.out.println("SENT DATE: " + mails[0].getSentDate());
+			System.out.println("SUBJECT: " + mails[0].getSubject());
+			InputStreamReader inputStreamReader = new InputStreamReader(mails[0].getInputStream());
+			System.out.println("BODY: "+ inputStreamReader.toString());
+		}
+		catch(Exception e){
+			System.out.println("Unknown Error has occured");
+		}
+		
+		
+	}
+}

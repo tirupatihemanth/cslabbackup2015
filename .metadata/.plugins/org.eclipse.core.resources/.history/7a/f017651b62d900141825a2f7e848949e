@@ -1,0 +1,152 @@
+package cs13b027_lab8_1;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class FordFulkerson {
+
+	private static int n, m, destIdx;
+
+	public static void main(String[] args) {
+
+		Scanner input = new Scanner(System.in);
+		n = input.nextInt();
+		m = input.nextInt();
+		//Graph graph = new Graph(n, m);
+		Graph residualGraph = new Graph(n, m);
+		int nodeIdx1, nodeIdx2, capacity;
+		destIdx = n - 1;
+		boolean stat;
+		for (int i = 0; i < m; i++) {
+			stat = false;
+			nodeIdx1 = input.nextInt();
+			nodeIdx2 = input.nextInt();
+			capacity = input.nextInt();
+			for (Edge edge : residualGraph.getAdjacentEdges(nodeIdx2)) {
+				if (edge.getSecondNode().getIndex() == nodeIdx1) {
+					
+					Node node = new Node(residualGraph.getAdjacencyList().size());
+					//graph.getAllNodes().add(node);
+					node = new Node(residualGraph.getAdjacencyList().size());
+					residualGraph.getAllNodes().add(node);
+					
+					//graph.getAdjacencyList().add(new LinkedList<Edge>());
+					residualGraph.getAdjacencyList()
+							.add(new LinkedList<Edge>());
+					n++;
+					//graph.addEdge(nodeIdx1, n - 1, capacity);
+					residualGraph.addUndirectedEdge(nodeIdx1, n - 1, capacity);
+					//graph.addEdge(n - 1, nodeIdx2, capacity);
+					residualGraph.addUndirectedEdge(n - 1, nodeIdx2, capacity);
+					m += 2;
+					stat = true;
+					break;
+				}
+			}
+			if (!stat) {
+				//graph.addEdge(nodeIdx1, nodeIdx2, capacity);
+				residualGraph.addUndirectedEdge(nodeIdx1, nodeIdx2, capacity);
+			}
+
+		}
+		
+		int min;
+		while (getPath(residualGraph, 0)) {
+			min = getMin(residualGraph, 0, Integer.MAX_VALUE);
+			updateMaxFlow(residualGraph, 0, min);
+			updateResidualGraph(residualGraph, 0, min);
+		}
+		min = 0;
+		
+		for(LinkedList<Edge> temp1: residualGraph.getAdjacencyList()){
+			for(Edge edge: temp1){
+				if(edge.getSecondNode().getIndex() == destIdx){
+					min+=edge.getMaxFlow();
+				}
+			}
+		}
+		System.out.println(min);
+
+	}
+
+	//Getting path using dfs
+	public static boolean getPath(Graph graph, int nodeIdx) {
+		if (nodeIdx == destIdx) {
+			return true;
+		}
+
+		for (Edge edge : graph.getAdjacentEdges(nodeIdx)) {
+			if (edge.getFlow() > 0 && edge.getPathMark() == false) {
+				edge.setPathMark(true);
+				if (getPath(graph, edge.getSecondNode().getIndex())) {
+					return true;
+				}
+				edge.setPathMark(false);
+			}
+		}
+		return false;
+	}
+
+	//getMin weight along the path
+	public static int getMin(Graph graph, int nodeIdx, int min) {
+		
+		if(nodeIdx == destIdx){
+			return min;
+		}
+		
+		for (Edge edge : graph.getAdjacentEdges(nodeIdx)) {
+			if (edge.getPathMark()) {
+				min = edge.getFlow() < min ? edge.getFlow() : min;
+				edge.setPathMark(false);
+				min = getMin(graph, edge.getSecondNode().getIndex(), min);
+				edge.setPathMark(true);
+				return min;
+			}
+		}
+		return min;
+	}
+
+	// updating the max flow along a path
+	public static void updateMaxFlow(Graph residualGraph, int nodeIdx, int min) {
+		if(nodeIdx == destIdx){
+			return;
+		}
+		
+		for (Edge edge : residualGraph.getAdjacentEdges(nodeIdx)) {
+			if (edge.getPathMark()) {
+				edge.setMaxFlow(edge.getMaxFlow() + min);
+				edge.setPathMark(false);
+				updateMaxFlow(residualGraph, edge.getSecondNode().getIndex(), min);
+				edge.setPathMark(true);
+				break;
+			}
+		}
+	}
+
+	//update residual Graph with the max Flow 
+	public static void updateResidualGraph(Graph graph, int nodeIdx, int min) {
+		
+		if(nodeIdx == destIdx){
+			return;
+		}
+		
+		for (Edge edge : graph.getAdjacentEdges(nodeIdx)) {
+			if (edge.getPathMark()) {
+				edge.setPathMark(false);
+				edge.setFlow(edge.getFlow() - min);
+				for (Edge temp : graph.getAdjacencyList().get(
+						edge.getSecondNode().getIndex())) {
+					if (temp.getSecondNode().getIndex() == edge.getFirstNode()
+							.getIndex()) {
+						temp.setFlow(temp.getFlow() + min);
+						break;
+					}
+				}
+				
+				updateResidualGraph(graph, edge.getSecondNode().getIndex(), min);
+				break;
+			}
+		}
+	}
+
+}

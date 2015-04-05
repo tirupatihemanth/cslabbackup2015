@@ -37,6 +37,35 @@ public class AVLTree {
 		System.out.println();
 	}
 
+	// print the tree in breadthfirst manner
+	public void print_breadthfirst() {
+		if (root == null)
+			return;
+		else {
+			Node[] node = new Node[count(root)];
+			int i = 0, n = 0;
+			node[n++] = root;
+			int k=0, bfsLevel=0;
+			while (i < n) {
+				System.out.printf("%d ", node[i].getData());
+				if (node[i].left != null) {
+					node[n++] = node[i].left;
+				}
+				if (node[i].right != null) {
+					node[n++] = node[i].right;
+				}
+				i++;
+				if( i == bfsLevel + Math.pow(2, k)){
+					System.out.printf(" # ");
+					k++;
+					bfsLevel = i;
+				}
+			}
+
+		}
+		System.out.println();
+	}
+	
 	public void printInorder(Node node){
 		
 		if(node == null){
@@ -47,6 +76,19 @@ public class AVLTree {
 		System.out.printf("%d ",node.getData());
 		printInorder(node.getRight());
 		
+	}
+	
+	// private function used by breadthfirst to count no. of elements in the bst
+	private int count(Node node) {
+		if (node == null)
+			return 0;
+		else
+			return count(node.left) + 1 + count(node.right);
+	}
+
+	// public counterpart to find no. of nodes in the bst
+	public int count() {
+		return count(root);
 	}
 	
 	public void insert(int data) {
@@ -89,6 +131,9 @@ public class AVLTree {
 		Node node = search(data);
 		Node removeNode = null;
 		
+		if(search(data)== null){
+			return;
+		}
 		if(node.parent == null && node.left == null && node.right == null){
 			root = null;
 			return;

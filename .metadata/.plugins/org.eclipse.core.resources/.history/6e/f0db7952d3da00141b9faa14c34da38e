@@ -1,0 +1,24 @@
+package iitm.apl.KnightsTour;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MyTour extends ChessBoard{
+
+	@Override
+	List<Move> tour(Move m) {
+		// TODO Auto-generated method stub
+		List<Move> movesList = new ArrayList<Move>();
+		for(Move move: m.reachableMoves()){
+			movesList.add(move);
+		}
+		
+		return movesList;
+	}
+
+	public static void main(String[] args){
+		initialise(new MyTour());
+		
+	}
+	
+}

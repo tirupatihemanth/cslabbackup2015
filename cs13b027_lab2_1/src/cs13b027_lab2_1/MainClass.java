@@ -1,6 +1,5 @@
 package cs13b027_lab2_1;
 
-import java.awt.datatransfer.ClipboardOwner;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;

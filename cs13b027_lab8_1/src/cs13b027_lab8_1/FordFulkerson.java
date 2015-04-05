@@ -12,7 +12,7 @@ public class FordFulkerson {
 		Scanner input = new Scanner(System.in);
 		n = input.nextInt();
 		m = input.nextInt();
-		Graph graph = new Graph(n, m);
+		//Graph graph = new Graph(n, m);
 		Graph residualGraph = new Graph(n, m);
 		int nodeIdx1, nodeIdx2, capacity;
 		destIdx = n - 1;
@@ -22,29 +22,29 @@ public class FordFulkerson {
 			nodeIdx1 = input.nextInt();
 			nodeIdx2 = input.nextInt();
 			capacity = input.nextInt();
-			for (Edge edge : graph.getAdjacentEdges(nodeIdx2)) {
+			for (Edge edge : residualGraph.getAdjacentEdges(nodeIdx2)) {
 				if (edge.getSecondNode().getIndex() == nodeIdx1) {
 					
-					Node node = new Node(graph.getAdjacencyList().size());
-					graph.getAllNodes().add(node);
+					Node node = new Node(residualGraph.getAdjacencyList().size());
+					//graph.getAllNodes().add(node);
 					node = new Node(residualGraph.getAdjacencyList().size());
 					residualGraph.getAllNodes().add(node);
 					
-					graph.getAdjacencyList().add(new LinkedList<Edge>());
+					//graph.getAdjacencyList().add(new LinkedList<Edge>());
 					residualGraph.getAdjacencyList()
 							.add(new LinkedList<Edge>());
 					n++;
-					graph.addEdge(nodeIdx1, n - 1, capacity);
+					//graph.addEdge(nodeIdx1, n - 1, capacity);
 					residualGraph.addUndirectedEdge(nodeIdx1, n - 1, capacity);
-					graph.addEdge(n - 1, nodeIdx2, capacity);
-					graph.addUndirectedEdge(n - 1, nodeIdx2, capacity);
+					//graph.addEdge(n - 1, nodeIdx2, capacity);
+					residualGraph.addUndirectedEdge(n - 1, nodeIdx2, capacity);
 					m += 2;
 					stat = true;
 					break;
 				}
 			}
 			if (!stat) {
-				graph.addEdge(nodeIdx1, nodeIdx2, capacity);
+				//graph.addEdge(nodeIdx1, nodeIdx2, capacity);
 				residualGraph.addUndirectedEdge(nodeIdx1, nodeIdx2, capacity);
 			}
 
@@ -58,6 +58,7 @@ public class FordFulkerson {
 		}
 		min = 0;
 		
+		//getting the maxFlow by adding all the edges to it
 		for(LinkedList<Edge> temp1: residualGraph.getAdjacencyList()){
 			for(Edge edge: temp1){
 				if(edge.getSecondNode().getIndex() == destIdx){
@@ -69,6 +70,7 @@ public class FordFulkerson {
 
 	}
 
+	//Getting path using dfs
 	public static boolean getPath(Graph graph, int nodeIdx) {
 		if (nodeIdx == destIdx) {
 			return true;
@@ -86,6 +88,7 @@ public class FordFulkerson {
 		return false;
 	}
 
+	//getMin weight along the path
 	public static int getMin(Graph graph, int nodeIdx, int min) {
 		
 		if(nodeIdx == destIdx){
@@ -104,6 +107,7 @@ public class FordFulkerson {
 		return min;
 	}
 
+	// updating the max flow along a path
 	public static void updateMaxFlow(Graph residualGraph, int nodeIdx, int min) {
 		if(nodeIdx == destIdx){
 			return;
@@ -120,6 +124,7 @@ public class FordFulkerson {
 		}
 	}
 
+	//update residual Graph with the max Flow 
 	public static void updateResidualGraph(Graph graph, int nodeIdx, int min) {
 		
 		if(nodeIdx == destIdx){

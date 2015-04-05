@@ -1,0 +1,25 @@
+import java.util.Properties;
+
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Store;
+
+
+public class ReadMail {
+	public static void main(String[] args){
+		Properties properties = new Properties();
+		properties.setProperty("mail.store.protocol", "imaps");
+		try{
+			Session userSession = Session.getInstance(properties, null);
+			Store messageDB = userSession.getStore();
+			messageDB.connect("imap.gmail.com", "cs13b027@smail.iitm.ac.in", "0808122582");
+			Folder inboxFolder = messageDB.getFolder("INBOX");
+			inboxFolder.open(Folder.READ_ONLY);
+			Message mails = inboxFolder.getMessage(inboxFolder.getMessageCount());
+		}
+		catch(Exception e){
+			System.out.println("Unknown Error has occured");
+		}
+	}
+}

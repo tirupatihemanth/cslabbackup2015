@@ -1,0 +1,98 @@
+package iitm.apl.KnightsTour;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+
+public class MyTour extends ChessBoard{
+
+	List<Move> movesList;
+	PriorityQueue<Move> pQueue;
+	@Override
+	List<Move> tour(Move m) {
+		// TODO Auto-generated method stub
+		movesList = new ArrayList<Move>();
+		
+		class MyComparator implements Comparator<Move>{
+
+			@Override
+			public int compare(Move o1, Move o2) {
+				// TODO Auto-generated method stub
+				int count1=0, count2=0;
+				
+				for(Move move: o1.reachableMoves()){
+					if(isNextMoveValid(move)){
+						count1++;
+					}
+				}
+				
+				for(Move move : o2.reachableMoves()){
+					if(isNextMoveValid(move)){
+						count2++;
+					}
+				}
+				return count1 - count2;
+			}
+
+
+			
+		}
+		
+		MyComparator myComparator = new MyComparator();
+		
+		pQueue = new PriorityQueue<Move>(10, myComparator);
+		
+		backTrackMoves(m);
+		return movesList;
+	}
+	
+	private boolean backTrackMoves(Move m){
+		
+		movesList.add(m);
+		makeMove(m);
+		
+		if(movesList.size() == getBoardSize()*getBoardSize()){
+			return true;
+		}
+		
+		for(Move move: m.reachableMoves()){
+			if(isNextMoveValid(move)){
+				pQueue.add(move);
+			}
+		}
+		
+		Move move;
+		for(int i=0;i<pQueue.size();i++){
+			move = pQueue.poll();
+			if(backTrackMoves(move)){
+				return true;
+			}
+			else{
+				movesList.remove(move);
+				undoMove();
+			}
+		}
+		
+/*		for(Move move: m.reachableMoves()){
+			if(isNextMoveValid(move)){
+				
+				if(backTrackMoves(move)){
+					return true;
+				}
+				else{
+					movesList.remove(move);
+					undoMove();
+				}
+			}
+		}*/
+		
+		return false;
+	}
+	
+	public static void main(String[] args){
+		initialise(new MyTour());
+		
+	}
+	
+}
